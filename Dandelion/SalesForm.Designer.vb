@@ -24,8 +24,7 @@ Partial Class SalesForm
     Private Sub InitializeComponent()
         Dim resources As System.ComponentModel.ComponentResourceManager = New System.ComponentModel.ComponentResourceManager(GetType(SalesForm))
         Me.CartGrpBox = New System.Windows.Forms.GroupBox()
-        Me.ListBox1 = New System.Windows.Forms.ListBox()
-        Me.CartCntrlGrpBox = New System.Windows.Forms.GroupBox()
+        Me.CartLstBox = New System.Windows.Forms.ListBox()
         Me.CatagoryTabCntrl = New System.Windows.Forms.TabControl()
         Me.ColdFoodTabPage = New System.Windows.Forms.TabPage()
         Me.CookedTabPage = New System.Windows.Forms.TabPage()
@@ -37,6 +36,8 @@ Partial Class SalesForm
         Me.SalesMnuStrp = New System.Windows.Forms.MenuStrip()
         Me.FileToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
         Me.SettingsToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
+        Me.SearchTxtBox = New System.Windows.Forms.TextBox()
+        Me.BtnCntrlGrpBox = New System.Windows.Forms.GroupBox()
         Me.CartGrpBox.SuspendLayout()
         Me.CatagoryTabCntrl.SuspendLayout()
         Me.SalesMnuStrp.SuspendLayout()
@@ -44,8 +45,8 @@ Partial Class SalesForm
         '
         'CartGrpBox
         '
-        Me.CartGrpBox.Controls.Add(Me.ListBox1)
-        Me.CartGrpBox.Controls.Add(Me.CartCntrlGrpBox)
+        Me.CartGrpBox.Controls.Add(Me.BtnCntrlGrpBox)
+        Me.CartGrpBox.Controls.Add(Me.CartLstBox)
         Me.CartGrpBox.Dock = System.Windows.Forms.DockStyle.Right
         Me.CartGrpBox.Location = New System.Drawing.Point(729, 24)
         Me.CartGrpBox.Name = "CartGrpBox"
@@ -54,23 +55,14 @@ Partial Class SalesForm
         Me.CartGrpBox.TabStop = False
         Me.CartGrpBox.Text = "Cart"
         '
-        'ListBox1
+        'CartLstBox
         '
-        Me.ListBox1.Dock = System.Windows.Forms.DockStyle.Fill
-        Me.ListBox1.FormattingEnabled = True
-        Me.ListBox1.Location = New System.Drawing.Point(3, 16)
-        Me.ListBox1.Name = "ListBox1"
-        Me.ListBox1.Size = New System.Drawing.Size(260, 380)
-        Me.ListBox1.TabIndex = 1
-        '
-        'CartCntrlGrpBox
-        '
-        Me.CartCntrlGrpBox.Dock = System.Windows.Forms.DockStyle.Bottom
-        Me.CartCntrlGrpBox.Location = New System.Drawing.Point(3, 396)
-        Me.CartCntrlGrpBox.Name = "CartCntrlGrpBox"
-        Me.CartCntrlGrpBox.Size = New System.Drawing.Size(260, 135)
-        Me.CartCntrlGrpBox.TabIndex = 0
-        Me.CartCntrlGrpBox.TabStop = False
+        Me.CartLstBox.Dock = System.Windows.Forms.DockStyle.Fill
+        Me.CartLstBox.FormattingEnabled = True
+        Me.CartLstBox.Location = New System.Drawing.Point(3, 16)
+        Me.CartLstBox.Name = "CartLstBox"
+        Me.CartLstBox.Size = New System.Drawing.Size(260, 515)
+        Me.CartLstBox.TabIndex = 1
         '
         'CatagoryTabCntrl
         '
@@ -190,11 +182,29 @@ Partial Class SalesForm
         Me.SettingsToolStripMenuItem.Size = New System.Drawing.Size(116, 22)
         Me.SettingsToolStripMenuItem.Text = "Settings"
         '
+        'SearchTxtBox
+        '
+        Me.SearchTxtBox.Dock = System.Windows.Forms.DockStyle.Right
+        Me.SearchTxtBox.Location = New System.Drawing.Point(574, 24)
+        Me.SearchTxtBox.Name = "SearchTxtBox"
+        Me.SearchTxtBox.Size = New System.Drawing.Size(155, 20)
+        Me.SearchTxtBox.TabIndex = 2
+        '
+        'BtnCntrlGrpBox
+        '
+        Me.BtnCntrlGrpBox.Dock = System.Windows.Forms.DockStyle.Bottom
+        Me.BtnCntrlGrpBox.Location = New System.Drawing.Point(3, 401)
+        Me.BtnCntrlGrpBox.Name = "BtnCntrlGrpBox"
+        Me.BtnCntrlGrpBox.Size = New System.Drawing.Size(260, 130)
+        Me.BtnCntrlGrpBox.TabIndex = 3
+        Me.BtnCntrlGrpBox.TabStop = False
+        '
         'SalesForm
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(6.0!, 13.0!)
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
         Me.ClientSize = New System.Drawing.Size(995, 558)
+        Me.Controls.Add(Me.SearchTxtBox)
         Me.Controls.Add(Me.CatagoryTabCntrl)
         Me.Controls.Add(Me.CartGrpBox)
         Me.Controls.Add(Me.SalesMnuStrp)
@@ -213,8 +223,7 @@ Partial Class SalesForm
 
     End Sub
     Friend WithEvents CartGrpBox As System.Windows.Forms.GroupBox
-    Friend WithEvents CartCntrlGrpBox As System.Windows.Forms.GroupBox
-    Friend WithEvents ListBox1 As System.Windows.Forms.ListBox
+    Friend WithEvents CartLstBox As System.Windows.Forms.ListBox
     Friend WithEvents CatagoryTabCntrl As System.Windows.Forms.TabControl
     Friend WithEvents ColdFoodTabPage As System.Windows.Forms.TabPage
     Friend WithEvents CookedTabPage As System.Windows.Forms.TabPage
@@ -226,5 +235,7 @@ Partial Class SalesForm
     Friend WithEvents SalesMnuStrp As System.Windows.Forms.MenuStrip
     Friend WithEvents FileToolStripMenuItem As System.Windows.Forms.ToolStripMenuItem
     Friend WithEvents SettingsToolStripMenuItem As System.Windows.Forms.ToolStripMenuItem
+    Friend WithEvents BtnCntrlGrpBox As System.Windows.Forms.GroupBox
+    Friend WithEvents SearchTxtBox As System.Windows.Forms.TextBox
 
 End Class
