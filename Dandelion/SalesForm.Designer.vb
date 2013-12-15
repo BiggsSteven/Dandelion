@@ -24,7 +24,6 @@ Partial Class SalesForm
     Private Sub InitializeComponent()
         Dim resources As System.ComponentModel.ComponentResourceManager = New System.ComponentModel.ComponentResourceManager(GetType(SalesForm))
         Me.CartGrpBox = New System.Windows.Forms.GroupBox()
-        Me.BtnCntrlGrpBox = New System.Windows.Forms.GroupBox()
         Me.CartLstBox = New System.Windows.Forms.ListBox()
         Me.CatagoryTabCntrl = New System.Windows.Forms.TabControl()
         Me.ColdFoodTabPage = New System.Windows.Forms.TabPage()
@@ -38,14 +37,10 @@ Partial Class SalesForm
         Me.FileToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
         Me.SettingsToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
         Me.SearchTxtBox = New System.Windows.Forms.TextBox()
-        Me.DataGridView1 = New System.Windows.Forms.DataGridView()
-        Me.Rob_ShopDataSet1 = New Dandelion.Rob_ShopDataSet()
+        Me.BtnCntrlGrpBox = New System.Windows.Forms.GroupBox()
         Me.CartGrpBox.SuspendLayout()
         Me.CatagoryTabCntrl.SuspendLayout()
-        Me.ColdFoodTabPage.SuspendLayout()
         Me.SalesMnuStrp.SuspendLayout()
-        CType(Me.DataGridView1, System.ComponentModel.ISupportInitialize).BeginInit()
-        CType(Me.Rob_ShopDataSet1, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.SuspendLayout()
         '
         'CartGrpBox
@@ -53,21 +48,12 @@ Partial Class SalesForm
         Me.CartGrpBox.Controls.Add(Me.BtnCntrlGrpBox)
         Me.CartGrpBox.Controls.Add(Me.CartLstBox)
         Me.CartGrpBox.Dock = System.Windows.Forms.DockStyle.Right
-        Me.CartGrpBox.Location = New System.Drawing.Point(1150, 24)
+        Me.CartGrpBox.Location = New System.Drawing.Point(729, 24)
         Me.CartGrpBox.Name = "CartGrpBox"
-        Me.CartGrpBox.Size = New System.Drawing.Size(266, 832)
+        Me.CartGrpBox.Size = New System.Drawing.Size(266, 534)
         Me.CartGrpBox.TabIndex = 0
         Me.CartGrpBox.TabStop = False
         Me.CartGrpBox.Text = "Cart"
-        '
-        'BtnCntrlGrpBox
-        '
-        Me.BtnCntrlGrpBox.Dock = System.Windows.Forms.DockStyle.Bottom
-        Me.BtnCntrlGrpBox.Location = New System.Drawing.Point(3, 531)
-        Me.BtnCntrlGrpBox.Name = "BtnCntrlGrpBox"
-        Me.BtnCntrlGrpBox.Size = New System.Drawing.Size(260, 298)
-        Me.BtnCntrlGrpBox.TabIndex = 3
-        Me.BtnCntrlGrpBox.TabStop = False
         '
         'CartLstBox
         '
@@ -75,7 +61,7 @@ Partial Class SalesForm
         Me.CartLstBox.FormattingEnabled = True
         Me.CartLstBox.Location = New System.Drawing.Point(3, 16)
         Me.CartLstBox.Name = "CartLstBox"
-        Me.CartLstBox.Size = New System.Drawing.Size(260, 813)
+        Me.CartLstBox.Size = New System.Drawing.Size(260, 515)
         Me.CartLstBox.TabIndex = 1
         '
         'CatagoryTabCntrl
@@ -91,7 +77,7 @@ Partial Class SalesForm
         Me.CatagoryTabCntrl.Location = New System.Drawing.Point(0, 24)
         Me.CatagoryTabCntrl.Name = "CatagoryTabCntrl"
         Me.CatagoryTabCntrl.SelectedIndex = 0
-        Me.CatagoryTabCntrl.Size = New System.Drawing.Size(1150, 832)
+        Me.CatagoryTabCntrl.Size = New System.Drawing.Size(729, 534)
         Me.CatagoryTabCntrl.TabIndex = 1
         Me.CatagoryTabCntrl.TabStop = False
         '
@@ -100,10 +86,9 @@ Partial Class SalesForm
         Me.ColdFoodTabPage.BackColor = System.Drawing.Color.Transparent
         Me.ColdFoodTabPage.BackgroundImage = Global.Dandelion.My.Resources.Resources.Dandelion_logo_background
         Me.ColdFoodTabPage.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch
-        Me.ColdFoodTabPage.Controls.Add(Me.DataGridView1)
         Me.ColdFoodTabPage.Location = New System.Drawing.Point(4, 22)
         Me.ColdFoodTabPage.Name = "ColdFoodTabPage"
-        Me.ColdFoodTabPage.Size = New System.Drawing.Size(1142, 806)
+        Me.ColdFoodTabPage.Size = New System.Drawing.Size(721, 508)
         Me.ColdFoodTabPage.TabIndex = 3
         Me.ColdFoodTabPage.Text = "Cold Food"
         '
@@ -113,7 +98,7 @@ Partial Class SalesForm
         Me.CookedTabPage.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch
         Me.CookedTabPage.Location = New System.Drawing.Point(4, 22)
         Me.CookedTabPage.Name = "CookedTabPage"
-        Me.CookedTabPage.Size = New System.Drawing.Size(1142, 806)
+        Me.CookedTabPage.Size = New System.Drawing.Size(721, 508)
         Me.CookedTabPage.TabIndex = 4
         Me.CookedTabPage.Text = "Cooked Food"
         Me.CookedTabPage.UseVisualStyleBackColor = True
@@ -124,7 +109,7 @@ Partial Class SalesForm
         Me.BeverageTabPage.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch
         Me.BeverageTabPage.Location = New System.Drawing.Point(4, 22)
         Me.BeverageTabPage.Name = "BeverageTabPage"
-        Me.BeverageTabPage.Size = New System.Drawing.Size(1142, 806)
+        Me.BeverageTabPage.Size = New System.Drawing.Size(721, 508)
         Me.BeverageTabPage.TabIndex = 6
         Me.BeverageTabPage.Text = "Beverage"
         Me.BeverageTabPage.UseVisualStyleBackColor = True
@@ -136,7 +121,7 @@ Partial Class SalesForm
         Me.AlcoholTabPage.Location = New System.Drawing.Point(4, 22)
         Me.AlcoholTabPage.Name = "AlcoholTabPage"
         Me.AlcoholTabPage.Padding = New System.Windows.Forms.Padding(3)
-        Me.AlcoholTabPage.Size = New System.Drawing.Size(1142, 806)
+        Me.AlcoholTabPage.Size = New System.Drawing.Size(721, 508)
         Me.AlcoholTabPage.TabIndex = 1
         Me.AlcoholTabPage.Text = "Alcohol"
         Me.AlcoholTabPage.UseVisualStyleBackColor = True
@@ -148,7 +133,7 @@ Partial Class SalesForm
         Me.CigarettesTabPage.Location = New System.Drawing.Point(4, 22)
         Me.CigarettesTabPage.Name = "CigarettesTabPage"
         Me.CigarettesTabPage.Padding = New System.Windows.Forms.Padding(3)
-        Me.CigarettesTabPage.Size = New System.Drawing.Size(1142, 806)
+        Me.CigarettesTabPage.Size = New System.Drawing.Size(721, 508)
         Me.CigarettesTabPage.TabIndex = 0
         Me.CigarettesTabPage.Text = "Cigarettes"
         Me.CigarettesTabPage.UseVisualStyleBackColor = True
@@ -159,7 +144,7 @@ Partial Class SalesForm
         Me.GasLotteryTabPage.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch
         Me.GasLotteryTabPage.Location = New System.Drawing.Point(4, 22)
         Me.GasLotteryTabPage.Name = "GasLotteryTabPage"
-        Me.GasLotteryTabPage.Size = New System.Drawing.Size(1142, 806)
+        Me.GasLotteryTabPage.Size = New System.Drawing.Size(721, 508)
         Me.GasLotteryTabPage.TabIndex = 5
         Me.GasLotteryTabPage.Text = "Other"
         Me.GasLotteryTabPage.UseVisualStyleBackColor = True
@@ -170,7 +155,7 @@ Partial Class SalesForm
         Me.NonFoodTabPage.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch
         Me.NonFoodTabPage.Location = New System.Drawing.Point(4, 22)
         Me.NonFoodTabPage.Name = "NonFoodTabPage"
-        Me.NonFoodTabPage.Size = New System.Drawing.Size(1142, 806)
+        Me.NonFoodTabPage.Size = New System.Drawing.Size(721, 508)
         Me.NonFoodTabPage.TabIndex = 2
         Me.NonFoodTabPage.Text = "Non-food Products"
         Me.NonFoodTabPage.UseVisualStyleBackColor = True
@@ -180,7 +165,7 @@ Partial Class SalesForm
         Me.SalesMnuStrp.Items.AddRange(New System.Windows.Forms.ToolStripItem() {Me.FileToolStripMenuItem})
         Me.SalesMnuStrp.Location = New System.Drawing.Point(0, 0)
         Me.SalesMnuStrp.Name = "SalesMnuStrp"
-        Me.SalesMnuStrp.Size = New System.Drawing.Size(1416, 24)
+        Me.SalesMnuStrp.Size = New System.Drawing.Size(995, 24)
         Me.SalesMnuStrp.TabIndex = 2
         Me.SalesMnuStrp.Text = "MenuStrip1"
         '
@@ -200,32 +185,25 @@ Partial Class SalesForm
         'SearchTxtBox
         '
         Me.SearchTxtBox.Dock = System.Windows.Forms.DockStyle.Right
-        Me.SearchTxtBox.Location = New System.Drawing.Point(995, 24)
+        Me.SearchTxtBox.Location = New System.Drawing.Point(574, 24)
         Me.SearchTxtBox.Name = "SearchTxtBox"
         Me.SearchTxtBox.Size = New System.Drawing.Size(155, 20)
         Me.SearchTxtBox.TabIndex = 2
         '
-        'DataGridView1
+        'BtnCntrlGrpBox
         '
-        Me.DataGridView1.AutoGenerateColumns = False
-        Me.DataGridView1.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize
-        Me.DataGridView1.DataSource = Me.Rob_ShopDataSet1
-        Me.DataGridView1.Dock = System.Windows.Forms.DockStyle.Fill
-        Me.DataGridView1.Location = New System.Drawing.Point(0, 0)
-        Me.DataGridView1.Name = "DataGridView1"
-        Me.DataGridView1.Size = New System.Drawing.Size(1142, 806)
-        Me.DataGridView1.TabIndex = 0
-        '
-        'Rob_ShopDataSet1
-        '
-        Me.Rob_ShopDataSet1.DataSetName = "Rob_ShopDataSet"
-        Me.Rob_ShopDataSet1.SchemaSerializationMode = System.Data.SchemaSerializationMode.IncludeSchema
+        Me.BtnCntrlGrpBox.Dock = System.Windows.Forms.DockStyle.Bottom
+        Me.BtnCntrlGrpBox.Location = New System.Drawing.Point(3, 401)
+        Me.BtnCntrlGrpBox.Name = "BtnCntrlGrpBox"
+        Me.BtnCntrlGrpBox.Size = New System.Drawing.Size(260, 130)
+        Me.BtnCntrlGrpBox.TabIndex = 3
+        Me.BtnCntrlGrpBox.TabStop = False
         '
         'SalesForm
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(6.0!, 13.0!)
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
-        Me.ClientSize = New System.Drawing.Size(1416, 856)
+        Me.ClientSize = New System.Drawing.Size(995, 558)
         Me.Controls.Add(Me.SearchTxtBox)
         Me.Controls.Add(Me.CatagoryTabCntrl)
         Me.Controls.Add(Me.CartGrpBox)
@@ -238,11 +216,8 @@ Partial Class SalesForm
         Me.WindowState = System.Windows.Forms.FormWindowState.Maximized
         Me.CartGrpBox.ResumeLayout(False)
         Me.CatagoryTabCntrl.ResumeLayout(False)
-        Me.ColdFoodTabPage.ResumeLayout(False)
         Me.SalesMnuStrp.ResumeLayout(False)
         Me.SalesMnuStrp.PerformLayout()
-        CType(Me.DataGridView1, System.ComponentModel.ISupportInitialize).EndInit()
-        CType(Me.Rob_ShopDataSet1, System.ComponentModel.ISupportInitialize).EndInit()
         Me.ResumeLayout(False)
         Me.PerformLayout()
 
@@ -262,7 +237,5 @@ Partial Class SalesForm
     Friend WithEvents SettingsToolStripMenuItem As System.Windows.Forms.ToolStripMenuItem
     Friend WithEvents BtnCntrlGrpBox As System.Windows.Forms.GroupBox
     Friend WithEvents SearchTxtBox As System.Windows.Forms.TextBox
-    Friend WithEvents DataGridView1 As System.Windows.Forms.DataGridView
-    Friend WithEvents Rob_ShopDataSet1 As Dandelion.Rob_ShopDataSet
 
 End Class
