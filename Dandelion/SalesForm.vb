@@ -1,11 +1,13 @@
-﻿Public Class SalesForm
+﻿Imports Dandelion
+Public Class SalesForm
 
-    Private Sub Form1_Load(sender As Object, e As EventArgs) Handles MyBase.Load
+    Private Sub SalesForm_Load(sender As Object, e As EventArgs) Handles MyBase.Load
+        'TODO: This line of code loads data into the 'DandelionDB1DataSet11.Item' table. You can move, or remove it, as needed.
+
+
+
 
     End Sub
 
-    Private Sub ColdFoodTabPage_ParentChanged(sender As Object, e As EventArgs) Handles ColdFoodTabPage.ParentChanged
 
-
-    End Sub
 End Class
