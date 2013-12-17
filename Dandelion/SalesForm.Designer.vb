@@ -24,6 +24,9 @@ Partial Class SalesForm
     Private Sub InitializeComponent()
         Dim resources As System.ComponentModel.ComponentResourceManager = New System.ComponentModel.ComponentResourceManager(GetType(SalesForm))
         Me.CartGrpBox = New System.Windows.Forms.GroupBox()
+        Me.priceListBox = New System.Windows.Forms.ListBox()
+        Me.nameLstBox = New System.Windows.Forms.ListBox()
+        Me.quanLstBox = New System.Windows.Forms.ListBox()
         Me.BtnCntrlGrpBox = New System.Windows.Forms.GroupBox()
         Me.CatagoryTabCntrl = New System.Windows.Forms.TabControl()
         Me.ColdFoodTabPage = New System.Windows.Forms.TabPage()
@@ -37,9 +40,6 @@ Partial Class SalesForm
         Me.FileToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
         Me.SettingsToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
         Me.SearchTxtBox = New System.Windows.Forms.TextBox()
-        Me.quanLstBox = New System.Windows.Forms.ListBox()
-        Me.nameLstBox = New System.Windows.Forms.ListBox()
-        Me.priceListBox = New System.Windows.Forms.ListBox()
         Me.CartGrpBox.SuspendLayout()
         Me.CatagoryTabCntrl.SuspendLayout()
         Me.SalesMnuStrp.SuspendLayout()
@@ -58,6 +58,33 @@ Partial Class SalesForm
         Me.CartGrpBox.TabIndex = 0
         Me.CartGrpBox.TabStop = False
         Me.CartGrpBox.Text = "Cart"
+        '
+        'priceListBox
+        '
+        Me.priceListBox.Dock = System.Windows.Forms.DockStyle.Left
+        Me.priceListBox.FormattingEnabled = True
+        Me.priceListBox.Location = New System.Drawing.Point(209, 16)
+        Me.priceListBox.Name = "priceListBox"
+        Me.priceListBox.Size = New System.Drawing.Size(58, 515)
+        Me.priceListBox.TabIndex = 6
+        '
+        'nameLstBox
+        '
+        Me.nameLstBox.Dock = System.Windows.Forms.DockStyle.Left
+        Me.nameLstBox.FormattingEnabled = True
+        Me.nameLstBox.Location = New System.Drawing.Point(37, 16)
+        Me.nameLstBox.Name = "nameLstBox"
+        Me.nameLstBox.Size = New System.Drawing.Size(172, 515)
+        Me.nameLstBox.TabIndex = 5
+        '
+        'quanLstBox
+        '
+        Me.quanLstBox.Dock = System.Windows.Forms.DockStyle.Left
+        Me.quanLstBox.FormattingEnabled = True
+        Me.quanLstBox.Location = New System.Drawing.Point(3, 16)
+        Me.quanLstBox.Name = "quanLstBox"
+        Me.quanLstBox.Size = New System.Drawing.Size(34, 515)
+        Me.quanLstBox.TabIndex = 4
         '
         'BtnCntrlGrpBox
         '
@@ -194,33 +221,6 @@ Partial Class SalesForm
         Me.SearchTxtBox.Size = New System.Drawing.Size(155, 20)
         Me.SearchTxtBox.TabIndex = 2
         '
-        'quanLstBox
-        '
-        Me.quanLstBox.Dock = System.Windows.Forms.DockStyle.Left
-        Me.quanLstBox.FormattingEnabled = True
-        Me.quanLstBox.Location = New System.Drawing.Point(3, 16)
-        Me.quanLstBox.Name = "quanLstBox"
-        Me.quanLstBox.Size = New System.Drawing.Size(34, 515)
-        Me.quanLstBox.TabIndex = 4
-        '
-        'nameLstBox
-        '
-        Me.nameLstBox.Dock = System.Windows.Forms.DockStyle.Left
-        Me.nameLstBox.FormattingEnabled = True
-        Me.nameLstBox.Location = New System.Drawing.Point(37, 16)
-        Me.nameLstBox.Name = "nameLstBox"
-        Me.nameLstBox.Size = New System.Drawing.Size(172, 515)
-        Me.nameLstBox.TabIndex = 5
-        '
-        'priceListBox
-        '
-        Me.priceListBox.Dock = System.Windows.Forms.DockStyle.Left
-        Me.priceListBox.FormattingEnabled = True
-        Me.priceListBox.Location = New System.Drawing.Point(209, 16)
-        Me.priceListBox.Name = "priceListBox"
-        Me.priceListBox.Size = New System.Drawing.Size(58, 515)
-        Me.priceListBox.TabIndex = 6
-        '
         'SalesForm
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(6.0!, 13.0!)
@@ -239,11 +239,11 @@ Partial Class SalesForm
         Me.CartGrpBox.ResumeLayout(False)
         Me.CatagoryTabCntrl.ResumeLayout(False)
         Me.SalesMnuStrp.ResumeLayout(False)
-        Me.SalesMnuStrp.PerformLayout()
-        Me.ResumeLayout(False)
-        Me.PerformLayout()
+        Me.SalesMnuStrp.PerformLayout
+        Me.ResumeLayout(false)
+        Me.PerformLayout
 
-    End Sub
+End Sub
     Friend WithEvents CartGrpBox As System.Windows.Forms.GroupBox
     Friend WithEvents CatagoryTabCntrl As System.Windows.Forms.TabControl
     Friend WithEvents ColdFoodTabPage As System.Windows.Forms.TabPage
@@ -261,5 +261,6 @@ Partial Class SalesForm
     Friend WithEvents priceListBox As System.Windows.Forms.ListBox
     Friend WithEvents nameLstBox As System.Windows.Forms.ListBox
     Friend WithEvents quanLstBox As System.Windows.Forms.ListBox
+    'Friend WithEvents Button1 As System.Windows.Forms.Button
 
 End Class

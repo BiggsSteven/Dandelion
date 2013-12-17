@@ -22,6 +22,7 @@
         setCat(tempCat)
         setPrice(tempPrice)
     End Sub
+
     Public Function getBarcode() As String
 
         Return barcode

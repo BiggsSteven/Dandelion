@@ -70,8 +70,12 @@
     <Import Include="System.Threading.Tasks" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Cart.vb" />
     <Compile Include="Inventory.vb" />
     <Compile Include="Item.vb" />
+    <Compile Include="ItemButton.vb">
+      <SubType>Component</SubType>
+    </Compile>
     <Compile Include="SalesForm.vb">
       <SubType>Form</SubType>
     </Compile>
