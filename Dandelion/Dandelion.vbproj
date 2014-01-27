@@ -71,8 +71,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Cart.vb" />
-    <Compile Include="Inventory.vb" />
-    <Compile Include="Item.vb" />
+    <Compile Include="DatabaseClass.vb" />
     <Compile Include="ItemButton.vb">
       <SubType>Component</SubType>
     </Compile>
@@ -120,7 +119,9 @@
       <CustomToolNamespace>My</CustomToolNamespace>
       <LastGenOutput>Settings.Designer.vb</LastGenOutput>
     </None>
-    <None Include="App.config" />
+    <None Include="App.config">
+      <SubType>Designer</SubType>
+    </None>
   </ItemGroup>
   <ItemGroup>
     <None Include="obj\Images\Dandelion logo background.jpg" />
