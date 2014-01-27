@@ -64,17 +64,20 @@ Public Class SalesForm
             Dim startLeft As Integer = 20
             Dim btnBoxSize As Integer = 75
             Dim row As Integer = 0
+            Dim column As Integer = 0
 
             Do While increCount < rowCount
-                If ((startLeft + ((increCount + 1) * btnBoxSize)) = boxSize) Then
+                If ((startLeft + ((column + 1) * btnBoxSize)) > CatBox.Left) Then
                     row += 1
+                    column = 0
                 End If
-                ItemList(increCount).Left = startLeft + (increCount * btnBoxSize)
+                ItemList(increCount).Left = startLeft + (column * btnBoxSize)
                 ItemList(increCount).Top = startTop + (row * btnBoxSize)
                 ItemList(increCount).Height = btnBoxSize
                 ItemList(increCount).Width = btnBoxSize
                 ItemsBox.Controls.Add(ItemList(increCount))
                 increCount += 1
+                column += 1
             Loop
         End If
     End Sub
