@@ -11,7 +11,7 @@ Public Class SalesForm
 
     Private Sub SalesForm_Load(sender As Object, e As EventArgs) Handles MyBase.Load
         MainRegister.Database()
-        changeCat(2) 'Start with first category open by default
+        changeCat(1) 'Start with first category open by default
 
 
 
@@ -53,7 +53,9 @@ Public Class SalesForm
             ItemsBox.Dispose()
             ItemsBox = New GroupBox
             Me.Controls.Add(ItemsBox)
-            ItemsBox.Dock = DockStyle.Fill
+            ItemsBox.Width = CatBox.Left
+            ItemsBox.Height = CtrlBox.Top
+
 
 
             Dim boxSize As Double = ItemsBox.Size.Width()

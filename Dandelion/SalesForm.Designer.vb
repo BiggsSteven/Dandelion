@@ -36,18 +36,19 @@ Partial Class SalesForm
         Me.CookedBtn = New System.Windows.Forms.Button()
         Me.ColdBtn = New System.Windows.Forms.Button()
         Me.ItemsBox = New System.Windows.Forms.GroupBox()
+        Me.CtrlBox = New System.Windows.Forms.GroupBox()
         Me.CartGrpBox.SuspendLayout()
         Me.CatBox.SuspendLayout()
         Me.SuspendLayout()
         '
         'CartGrpBox
         '
-        Me.CartGrpBox.Controls.Add(Me.CartLstBox)
         Me.CartGrpBox.Controls.Add(Me.BtnCntrlGrpBox)
+        Me.CartGrpBox.Controls.Add(Me.CartLstBox)
         Me.CartGrpBox.Dock = System.Windows.Forms.DockStyle.Right
-        Me.CartGrpBox.Location = New System.Drawing.Point(1150, 0)
+        Me.CartGrpBox.Location = New System.Drawing.Point(845, 0)
         Me.CartGrpBox.Name = "CartGrpBox"
-        Me.CartGrpBox.Size = New System.Drawing.Size(266, 856)
+        Me.CartGrpBox.Size = New System.Drawing.Size(266, 631)
         Me.CartGrpBox.TabIndex = 0
         Me.CartGrpBox.TabStop = False
         Me.CartGrpBox.Text = "Cart"
@@ -58,13 +59,13 @@ Partial Class SalesForm
         Me.CartLstBox.FormattingEnabled = True
         Me.CartLstBox.Location = New System.Drawing.Point(3, 16)
         Me.CartLstBox.Name = "CartLstBox"
-        Me.CartLstBox.Size = New System.Drawing.Size(260, 539)
+        Me.CartLstBox.Size = New System.Drawing.Size(260, 612)
         Me.CartLstBox.TabIndex = 5
         '
         'BtnCntrlGrpBox
         '
         Me.BtnCntrlGrpBox.Dock = System.Windows.Forms.DockStyle.Bottom
-        Me.BtnCntrlGrpBox.Location = New System.Drawing.Point(3, 555)
+        Me.BtnCntrlGrpBox.Location = New System.Drawing.Point(3, 330)
         Me.BtnCntrlGrpBox.Name = "BtnCntrlGrpBox"
         Me.BtnCntrlGrpBox.Size = New System.Drawing.Size(260, 298)
         Me.BtnCntrlGrpBox.TabIndex = 3
@@ -89,9 +90,9 @@ Partial Class SalesForm
         Me.CatBox.Controls.Add(Me.ColdBtn)
         Me.CatBox.Controls.Add(Me.SearchTxtBox)
         Me.CatBox.Dock = System.Windows.Forms.DockStyle.Right
-        Me.CatBox.Location = New System.Drawing.Point(970, 0)
+        Me.CatBox.Location = New System.Drawing.Point(665, 0)
         Me.CatBox.Name = "CatBox"
-        Me.CatBox.Size = New System.Drawing.Size(180, 856)
+        Me.CatBox.Size = New System.Drawing.Size(180, 531)
         Me.CatBox.TabIndex = 3
         Me.CatBox.TabStop = False
         '
@@ -170,18 +171,28 @@ Partial Class SalesForm
         Me.ItemsBox.Dock = System.Windows.Forms.DockStyle.Fill
         Me.ItemsBox.Location = New System.Drawing.Point(0, 0)
         Me.ItemsBox.Name = "ItemsBox"
-        Me.ItemsBox.Size = New System.Drawing.Size(970, 856)
+        Me.ItemsBox.Size = New System.Drawing.Size(665, 531)
         Me.ItemsBox.TabIndex = 4
         Me.ItemsBox.TabStop = False
         Me.ItemsBox.Text = "Items"
+        '
+        'CtrlBox
+        '
+        Me.CtrlBox.Dock = System.Windows.Forms.DockStyle.Bottom
+        Me.CtrlBox.Location = New System.Drawing.Point(0, 531)
+        Me.CtrlBox.Name = "CtrlBox"
+        Me.CtrlBox.Size = New System.Drawing.Size(845, 100)
+        Me.CtrlBox.TabIndex = 0
+        Me.CtrlBox.TabStop = False
         '
         'SalesForm
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(6.0!, 13.0!)
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
-        Me.ClientSize = New System.Drawing.Size(1416, 856)
+        Me.ClientSize = New System.Drawing.Size(1111, 631)
         Me.Controls.Add(Me.ItemsBox)
         Me.Controls.Add(Me.CatBox)
+        Me.Controls.Add(Me.CtrlBox)
         Me.Controls.Add(Me.CartGrpBox)
         Me.DoubleBuffered = True
         Me.Icon = CType(resources.GetObject("$this.Icon"), System.Drawing.Icon)
@@ -207,6 +218,7 @@ Partial Class SalesForm
     Friend WithEvents CookedBtn As System.Windows.Forms.Button
     Friend WithEvents ColdBtn As System.Windows.Forms.Button
     Friend WithEvents ItemsBox As System.Windows.Forms.GroupBox
+    Friend WithEvents CtrlBox As System.Windows.Forms.GroupBox
     'Friend WithEvents Button1 As System.Windows.Forms.Button
 
 End Class
