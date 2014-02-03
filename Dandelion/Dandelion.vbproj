@@ -71,6 +71,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Cart.vb" />
+    <Compile Include="CartItem.vb" />
     <Compile Include="DatabaseClass.vb" />
     <Compile Include="ItemButton.vb">
       <SubType>Component</SubType>
