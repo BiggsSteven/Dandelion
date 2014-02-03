@@ -58,8 +58,11 @@ Partial Class SalesForm
         'CartLstBox
         '
         Me.CartLstBox.Dock = System.Windows.Forms.DockStyle.Fill
+        Me.CartLstBox.Font = New System.Drawing.Font("Microsoft Sans Serif", 15.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.CartLstBox.FormattingEnabled = True
+        Me.CartLstBox.ItemHeight = 25
         Me.CartLstBox.Location = New System.Drawing.Point(127, 16)
+        Me.CartLstBox.MultiColumn = True
         Me.CartLstBox.Name = "CartLstBox"
         Me.CartLstBox.Size = New System.Drawing.Size(299, 276)
         Me.CartLstBox.TabIndex = 5

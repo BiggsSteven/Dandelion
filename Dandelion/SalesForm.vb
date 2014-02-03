@@ -5,11 +5,12 @@ Imports System.Data.SqlClient
 
 Public Class SalesForm
     Dim mainRegister As DatabaseClass = New DatabaseClass
+    Dim ItemList As ItemButton()
     Dim catSelected As Integer = -1
 
 
     Private Sub SalesForm_Load(sender As Object, e As EventArgs) Handles MyBase.Load
-        MainRegister.Database()
+        mainRegister.Database()
         changeCat(1) 'Start with first category open by default
 
 
@@ -41,54 +42,52 @@ Public Class SalesForm
     End Sub
     Private Sub changeCat(ByVal choiceCat As Integer)
 
-        If (Not (choiceCat = catSelected)) Then
-
-            catSelected = choiceCat
 
 
-            Dim ItemList As ItemButton()
-            mainRegister.getItemList(choiceCat, ItemList)
 
-            ItemPnl.Dispose()
-            ItemPnl = New Panel
-            ItemPnl.AutoScroll = True
-            ItemPnl.Left = CatBox.Right
-            ItemPnl.Width = CartGrpBox.Left - CatBox.Right
-            ItemPnl.Height = CtrlBox.Top
-            Me.Controls.Add(ItemPnl)
+        mainRegister.getItemList(choiceCat, ItemList)
 
+        'To reset the buttons, the program disposes of the panel and recreates it
+        ItemPnl.Dispose()
+        ItemPnl = New Panel
+        ItemPnl.AutoScroll = True
+        ItemPnl.Left = CatBox.Right
+        ItemPnl.Width = CartGrpBox.Left - CatBox.Right
+        ItemPnl.Height = CtrlBox.Top
+        Me.Controls.Add(ItemPnl)
 
-            Dim boxSize As Double = ItemPnl.Size.Width()
-            Dim rowCount As Integer = ItemList.Length
-            Dim increCount As Integer = 0
+        addBtnToPnl()
 
-            Dim startTop As Integer = 20
-            Dim startLeft As Integer = 5
-            Dim btnBoxSize As Integer = 75
-            Dim row As Integer = 0
-            Dim column As Integer = 0
-
-            Do While increCount < rowCount
-                If ((startLeft + ((column + 1) * btnBoxSize)) > boxSize) Then
-                    row += 1
-                    column = 0
-                End If
-                ItemList(increCount).Left = startLeft + (column * btnBoxSize)
-                ItemList(increCount).Top = startTop + (row * btnBoxSize)
-                ItemList(increCount).Height = btnBoxSize
-                ItemList(increCount).Width = btnBoxSize
-                ItemPnl.Controls.Add(ItemList(increCount))
-                AddHandler ItemList(increCount).Click, AddressOf Me.addToCart
-                increCount += 1
-                column += 1
-
-            Loop
-        End If
     End Sub
 
-    Public Sub addToCart(ByVal sender As System.Object, ByVal e As System.EventArgs)
+    Public Sub addBtnToPnl()
+        'sets variables to be used to place the buttons without overlap of the objects
+        Dim boxSize As Double = ItemPnl.Size.Width()
+        Dim rowCount As Integer = ItemList.Length
+        Dim increCount As Integer = 0
 
+        Dim startTop As Integer = 20
+        Dim startLeft As Integer = 5
+        Dim btnBoxSize As Integer = 75
+        Dim row As Integer = 0
+        Dim column As Integer = 0
 
+        'The loop creates each new button
+        Do While increCount < rowCount
+            If ((startLeft + ((column + 1) * btnBoxSize)) > boxSize) Then
+                row += 1
+                column = 0
+            End If
+            ItemList(increCount).Left = startLeft + (column * btnBoxSize)
+            ItemList(increCount).Top = startTop + (row * btnBoxSize)
+            ItemList(increCount).Height = btnBoxSize
+            ItemList(increCount).Width = btnBoxSize
+            ItemPnl.Controls.Add(ItemList(increCount))
+            AddHandler ItemList(increCount).Click, AddressOf ItemList(increCount).addToCart
+            increCount += 1
+            column += 1
+
+        Loop
     End Sub
 
 End Class

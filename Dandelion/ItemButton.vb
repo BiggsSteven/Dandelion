@@ -9,4 +9,9 @@
     Public Function getBarcode()
         Return barcode
     End Function
+
+    Public Sub addToCart(ByVal sender As System.Object, ByVal e As System.EventArgs)
+
+        SalesForm.CartLstBox.Items.Add(Me.Text)
+    End Sub
 End Class
