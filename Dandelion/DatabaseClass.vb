@@ -64,4 +64,20 @@ Public Class DatabaseClass
 
     End Sub
 
+    Public Function findDBItem(ByVal barcode As String)
+
+        sqlText = "SELECT Barcode, Name, Price, Tax FROM " & ConfigurationSettings.AppSettings("Item") & " WHERE Barcode = '" & barcode & "'"
+        sqlDa = New SqlDataAdapter(sqlText, sqlCon)
+        dt.Clear()
+        sqlDa.Fill(dt)
+
+        Dim name As String = dt.Rows(0).Item(1)
+        Dim Price As Double = dt.Rows(0).Item(2)
+        Dim tax As Double = dt.Rows(0).Item(3)
+
+        Dim itemFound As CartItem = New CartItem()
+        itemFound.setValues(barcode, name, Price, tax)
+
+        Return itemFound
+    End Function
 End Class

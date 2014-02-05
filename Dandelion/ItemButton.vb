@@ -12,6 +12,7 @@
 
     Public Sub addToCart(ByVal sender As System.Object, ByVal e As System.EventArgs)
 
-        SalesForm.CartLstBox.Items.Add(Me.Text)
+        SalesForm.currentCart.addItem(barcode)
+
     End Sub
 End Class

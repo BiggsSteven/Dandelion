@@ -38,6 +38,7 @@ Partial Class SalesForm
         Me.ColdBtn = New System.Windows.Forms.Button()
         Me.CtrlBox = New System.Windows.Forms.GroupBox()
         Me.ItemPnl = New System.Windows.Forms.Panel()
+        Me.PriceLstBox = New System.Windows.Forms.ListBox()
         Me.CartGrpBox.SuspendLayout()
         Me.CatBox.SuspendLayout()
         Me.SuspendLayout()
@@ -45,15 +46,15 @@ Partial Class SalesForm
         'CartGrpBox
         '
         Me.CartGrpBox.Controls.Add(Me.CartLstBox)
+        Me.CartGrpBox.Controls.Add(Me.PriceLstBox)
         Me.CartGrpBox.Controls.Add(Me.CartCtrlBox)
         Me.CartGrpBox.Controls.Add(Me.ChkoutCtrlBox)
         Me.CartGrpBox.Dock = System.Windows.Forms.DockStyle.Right
-        Me.CartGrpBox.Location = New System.Drawing.Point(682, 0)
+        Me.CartGrpBox.Location = New System.Drawing.Point(669, 0)
         Me.CartGrpBox.Name = "CartGrpBox"
-        Me.CartGrpBox.Size = New System.Drawing.Size(429, 631)
+        Me.CartGrpBox.Size = New System.Drawing.Size(442, 631)
         Me.CartGrpBox.TabIndex = 0
         Me.CartGrpBox.TabStop = False
-        Me.CartGrpBox.Text = "Cart"
         '
         'CartLstBox
         '
@@ -61,10 +62,10 @@ Partial Class SalesForm
         Me.CartLstBox.Font = New System.Drawing.Font("Microsoft Sans Serif", 15.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.CartLstBox.FormattingEnabled = True
         Me.CartLstBox.ItemHeight = 25
-        Me.CartLstBox.Location = New System.Drawing.Point(127, 16)
+        Me.CartLstBox.Location = New System.Drawing.Point(113, 16)
         Me.CartLstBox.MultiColumn = True
         Me.CartLstBox.Name = "CartLstBox"
-        Me.CartLstBox.Size = New System.Drawing.Size(299, 276)
+        Me.CartLstBox.Size = New System.Drawing.Size(237, 276)
         Me.CartLstBox.TabIndex = 5
         '
         'CartCtrlBox
@@ -72,7 +73,7 @@ Partial Class SalesForm
         Me.CartCtrlBox.Dock = System.Windows.Forms.DockStyle.Left
         Me.CartCtrlBox.Location = New System.Drawing.Point(3, 16)
         Me.CartCtrlBox.Name = "CartCtrlBox"
-        Me.CartCtrlBox.Size = New System.Drawing.Size(124, 276)
+        Me.CartCtrlBox.Size = New System.Drawing.Size(110, 276)
         Me.CartCtrlBox.TabIndex = 6
         Me.CartCtrlBox.TabStop = False
         '
@@ -81,7 +82,7 @@ Partial Class SalesForm
         Me.ChkoutCtrlBox.Dock = System.Windows.Forms.DockStyle.Bottom
         Me.ChkoutCtrlBox.Location = New System.Drawing.Point(3, 292)
         Me.ChkoutCtrlBox.Name = "ChkoutCtrlBox"
-        Me.ChkoutCtrlBox.Size = New System.Drawing.Size(423, 336)
+        Me.ChkoutCtrlBox.Size = New System.Drawing.Size(436, 336)
         Me.ChkoutCtrlBox.TabIndex = 3
         Me.ChkoutCtrlBox.TabStop = False
         '
@@ -90,7 +91,7 @@ Partial Class SalesForm
         Me.SearchTxtBox.Dock = System.Windows.Forms.DockStyle.Top
         Me.SearchTxtBox.Location = New System.Drawing.Point(3, 16)
         Me.SearchTxtBox.Name = "SearchTxtBox"
-        Me.SearchTxtBox.Size = New System.Drawing.Size(119, 20)
+        Me.SearchTxtBox.Size = New System.Drawing.Size(104, 20)
         Me.SearchTxtBox.TabIndex = 1
         '
         'CatBox
@@ -106,7 +107,7 @@ Partial Class SalesForm
         Me.CatBox.Dock = System.Windows.Forms.DockStyle.Left
         Me.CatBox.Location = New System.Drawing.Point(0, 0)
         Me.CatBox.Name = "CatBox"
-        Me.CatBox.Size = New System.Drawing.Size(125, 531)
+        Me.CatBox.Size = New System.Drawing.Size(110, 531)
         Me.CatBox.TabIndex = 3
         Me.CatBox.TabStop = False
         '
@@ -115,7 +116,7 @@ Partial Class SalesForm
         Me.Other.Dock = System.Windows.Forms.DockStyle.Top
         Me.Other.Location = New System.Drawing.Point(3, 510)
         Me.Other.Name = "Other"
-        Me.Other.Size = New System.Drawing.Size(119, 79)
+        Me.Other.Size = New System.Drawing.Size(104, 79)
         Me.Other.TabIndex = 9
         Me.Other.Text = "Other"
         Me.Other.UseVisualStyleBackColor = True
@@ -125,7 +126,7 @@ Partial Class SalesForm
         Me.NonConsumBtn.Dock = System.Windows.Forms.DockStyle.Top
         Me.NonConsumBtn.Location = New System.Drawing.Point(3, 431)
         Me.NonConsumBtn.Name = "NonConsumBtn"
-        Me.NonConsumBtn.Size = New System.Drawing.Size(119, 79)
+        Me.NonConsumBtn.Size = New System.Drawing.Size(104, 79)
         Me.NonConsumBtn.TabIndex = 8
         Me.NonConsumBtn.Text = "Non-Consumable Products"
         Me.NonConsumBtn.UseVisualStyleBackColor = True
@@ -135,7 +136,7 @@ Partial Class SalesForm
         Me.CigBtn.Dock = System.Windows.Forms.DockStyle.Top
         Me.CigBtn.Location = New System.Drawing.Point(3, 352)
         Me.CigBtn.Name = "CigBtn"
-        Me.CigBtn.Size = New System.Drawing.Size(119, 79)
+        Me.CigBtn.Size = New System.Drawing.Size(104, 79)
         Me.CigBtn.TabIndex = 7
         Me.CigBtn.Text = "Cigarettes"
         Me.CigBtn.UseVisualStyleBackColor = True
@@ -145,7 +146,7 @@ Partial Class SalesForm
         Me.AlcoholBtn.Dock = System.Windows.Forms.DockStyle.Top
         Me.AlcoholBtn.Location = New System.Drawing.Point(3, 273)
         Me.AlcoholBtn.Name = "AlcoholBtn"
-        Me.AlcoholBtn.Size = New System.Drawing.Size(119, 79)
+        Me.AlcoholBtn.Size = New System.Drawing.Size(104, 79)
         Me.AlcoholBtn.TabIndex = 6
         Me.AlcoholBtn.Text = "Alcohol"
         Me.AlcoholBtn.UseVisualStyleBackColor = True
@@ -155,7 +156,7 @@ Partial Class SalesForm
         Me.BeverageBtn.Dock = System.Windows.Forms.DockStyle.Top
         Me.BeverageBtn.Location = New System.Drawing.Point(3, 194)
         Me.BeverageBtn.Name = "BeverageBtn"
-        Me.BeverageBtn.Size = New System.Drawing.Size(119, 79)
+        Me.BeverageBtn.Size = New System.Drawing.Size(104, 79)
         Me.BeverageBtn.TabIndex = 5
         Me.BeverageBtn.Text = "Beverage"
         Me.BeverageBtn.UseVisualStyleBackColor = True
@@ -165,7 +166,7 @@ Partial Class SalesForm
         Me.CookedBtn.Dock = System.Windows.Forms.DockStyle.Top
         Me.CookedBtn.Location = New System.Drawing.Point(3, 115)
         Me.CookedBtn.Name = "CookedBtn"
-        Me.CookedBtn.Size = New System.Drawing.Size(119, 79)
+        Me.CookedBtn.Size = New System.Drawing.Size(104, 79)
         Me.CookedBtn.TabIndex = 3
         Me.CookedBtn.Text = "Cooked Food"
         Me.CookedBtn.UseVisualStyleBackColor = True
@@ -175,7 +176,7 @@ Partial Class SalesForm
         Me.ColdBtn.Dock = System.Windows.Forms.DockStyle.Top
         Me.ColdBtn.Location = New System.Drawing.Point(3, 36)
         Me.ColdBtn.Name = "ColdBtn"
-        Me.ColdBtn.Size = New System.Drawing.Size(119, 79)
+        Me.ColdBtn.Size = New System.Drawing.Size(104, 79)
         Me.ColdBtn.TabIndex = 2
         Me.ColdBtn.Text = "Cold Food"
         Me.ColdBtn.UseVisualStyleBackColor = True
@@ -185,7 +186,7 @@ Partial Class SalesForm
         Me.CtrlBox.Dock = System.Windows.Forms.DockStyle.Bottom
         Me.CtrlBox.Location = New System.Drawing.Point(0, 531)
         Me.CtrlBox.Name = "CtrlBox"
-        Me.CtrlBox.Size = New System.Drawing.Size(682, 100)
+        Me.CtrlBox.Size = New System.Drawing.Size(669, 100)
         Me.CtrlBox.TabIndex = 0
         Me.CtrlBox.TabStop = False
         '
@@ -194,8 +195,19 @@ Partial Class SalesForm
         Me.ItemPnl.AutoScroll = True
         Me.ItemPnl.Location = New System.Drawing.Point(132, 13)
         Me.ItemPnl.Name = "ItemPnl"
-        Me.ItemPnl.Size = New System.Drawing.Size(544, 518)
+        Me.ItemPnl.Size = New System.Drawing.Size(516, 518)
         Me.ItemPnl.TabIndex = 4
+        '
+        'PriceLstBox
+        '
+        Me.PriceLstBox.Dock = System.Windows.Forms.DockStyle.Right
+        Me.PriceLstBox.Font = New System.Drawing.Font("Microsoft Sans Serif", 15.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.PriceLstBox.FormattingEnabled = True
+        Me.PriceLstBox.ItemHeight = 25
+        Me.PriceLstBox.Location = New System.Drawing.Point(350, 16)
+        Me.PriceLstBox.Name = "PriceLstBox"
+        Me.PriceLstBox.Size = New System.Drawing.Size(89, 276)
+        Me.PriceLstBox.TabIndex = 7
         '
         'SalesForm
         '
@@ -232,6 +244,7 @@ Partial Class SalesForm
     Friend WithEvents CtrlBox As System.Windows.Forms.GroupBox
     Friend WithEvents CartCtrlBox As System.Windows.Forms.GroupBox
     Friend WithEvents ItemPnl As System.Windows.Forms.Panel
+    Friend WithEvents PriceLstBox As System.Windows.Forms.ListBox
     'Friend WithEvents Button1 As System.Windows.Forms.Button
 
 End Class

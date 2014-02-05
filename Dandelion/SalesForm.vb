@@ -4,13 +4,15 @@ Imports System.Collections.Specialized
 Imports System.Data.SqlClient
 
 Public Class SalesForm
-    Dim mainRegister As DatabaseClass = New DatabaseClass
+    Public mainRegister As DatabaseClass = New DatabaseClass
+    Public currentCart As Cart = New Cart
     Dim ItemList As ItemButton()
     Dim catSelected As Integer = -1
 
 
     Private Sub SalesForm_Load(sender As Object, e As EventArgs) Handles MyBase.Load
         mainRegister.Database()
+        currentCart.cartIntialize()
         changeCat(1) 'Start with first category open by default
 
 
