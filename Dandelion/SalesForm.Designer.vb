@@ -25,6 +25,7 @@ Partial Class SalesForm
         Dim resources As System.ComponentModel.ComponentResourceManager = New System.ComponentModel.ComponentResourceManager(GetType(SalesForm))
         Me.CartGrpBox = New System.Windows.Forms.GroupBox()
         Me.CartLstBox = New System.Windows.Forms.ListBox()
+        Me.PriceLstBox = New System.Windows.Forms.ListBox()
         Me.CartCtrlBox = New System.Windows.Forms.GroupBox()
         Me.ChkoutCtrlBox = New System.Windows.Forms.GroupBox()
         Me.SearchTxtBox = New System.Windows.Forms.TextBox()
@@ -38,8 +39,15 @@ Partial Class SalesForm
         Me.ColdBtn = New System.Windows.Forms.Button()
         Me.CtrlBox = New System.Windows.Forms.GroupBox()
         Me.ItemPnl = New System.Windows.Forms.Panel()
-        Me.PriceLstBox = New System.Windows.Forms.ListBox()
+        Me.ShapeContainer1 = New Microsoft.VisualBasic.PowerPacks.ShapeContainer()
+        Me.LineShape1 = New Microsoft.VisualBasic.PowerPacks.LineShape()
+        Me.DsctBtn = New System.Windows.Forms.Button()
+        Me.SubTotalLbl = New System.Windows.Forms.Label()
+        Me.TotalLabel = New System.Windows.Forms.Label()
+        Me.STBlankLbl = New System.Windows.Forms.Label()
+        Me.TBlankLbl = New System.Windows.Forms.Label()
         Me.CartGrpBox.SuspendLayout()
+        Me.ChkoutCtrlBox.SuspendLayout()
         Me.CatBox.SuspendLayout()
         Me.SuspendLayout()
         '
@@ -52,7 +60,7 @@ Partial Class SalesForm
         Me.CartGrpBox.Dock = System.Windows.Forms.DockStyle.Right
         Me.CartGrpBox.Location = New System.Drawing.Point(669, 0)
         Me.CartGrpBox.Name = "CartGrpBox"
-        Me.CartGrpBox.Size = New System.Drawing.Size(442, 631)
+        Me.CartGrpBox.Size = New System.Drawing.Size(442, 865)
         Me.CartGrpBox.TabIndex = 0
         Me.CartGrpBox.TabStop = False
         '
@@ -65,22 +73,37 @@ Partial Class SalesForm
         Me.CartLstBox.Location = New System.Drawing.Point(113, 16)
         Me.CartLstBox.MultiColumn = True
         Me.CartLstBox.Name = "CartLstBox"
-        Me.CartLstBox.Size = New System.Drawing.Size(237, 276)
+        Me.CartLstBox.Size = New System.Drawing.Size(237, 510)
         Me.CartLstBox.TabIndex = 5
+        '
+        'PriceLstBox
+        '
+        Me.PriceLstBox.Dock = System.Windows.Forms.DockStyle.Right
+        Me.PriceLstBox.Font = New System.Drawing.Font("Microsoft Sans Serif", 15.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.PriceLstBox.FormattingEnabled = True
+        Me.PriceLstBox.ItemHeight = 25
+        Me.PriceLstBox.Location = New System.Drawing.Point(350, 16)
+        Me.PriceLstBox.Name = "PriceLstBox"
+        Me.PriceLstBox.Size = New System.Drawing.Size(89, 510)
+        Me.PriceLstBox.TabIndex = 7
         '
         'CartCtrlBox
         '
         Me.CartCtrlBox.Dock = System.Windows.Forms.DockStyle.Left
         Me.CartCtrlBox.Location = New System.Drawing.Point(3, 16)
         Me.CartCtrlBox.Name = "CartCtrlBox"
-        Me.CartCtrlBox.Size = New System.Drawing.Size(110, 276)
+        Me.CartCtrlBox.Size = New System.Drawing.Size(110, 510)
         Me.CartCtrlBox.TabIndex = 6
         Me.CartCtrlBox.TabStop = False
         '
         'ChkoutCtrlBox
         '
+        Me.ChkoutCtrlBox.Controls.Add(Me.TBlankLbl)
+        Me.ChkoutCtrlBox.Controls.Add(Me.STBlankLbl)
+        Me.ChkoutCtrlBox.Controls.Add(Me.TotalLabel)
+        Me.ChkoutCtrlBox.Controls.Add(Me.SubTotalLbl)
         Me.ChkoutCtrlBox.Dock = System.Windows.Forms.DockStyle.Bottom
-        Me.ChkoutCtrlBox.Location = New System.Drawing.Point(3, 292)
+        Me.ChkoutCtrlBox.Location = New System.Drawing.Point(3, 526)
         Me.ChkoutCtrlBox.Name = "ChkoutCtrlBox"
         Me.ChkoutCtrlBox.Size = New System.Drawing.Size(436, 336)
         Me.ChkoutCtrlBox.TabIndex = 3
@@ -96,6 +119,7 @@ Partial Class SalesForm
         '
         'CatBox
         '
+        Me.CatBox.Controls.Add(Me.DsctBtn)
         Me.CatBox.Controls.Add(Me.Other)
         Me.CatBox.Controls.Add(Me.NonConsumBtn)
         Me.CatBox.Controls.Add(Me.CigBtn)
@@ -104,10 +128,11 @@ Partial Class SalesForm
         Me.CatBox.Controls.Add(Me.CookedBtn)
         Me.CatBox.Controls.Add(Me.ColdBtn)
         Me.CatBox.Controls.Add(Me.SearchTxtBox)
+        Me.CatBox.Controls.Add(Me.ShapeContainer1)
         Me.CatBox.Dock = System.Windows.Forms.DockStyle.Left
         Me.CatBox.Location = New System.Drawing.Point(0, 0)
         Me.CatBox.Name = "CatBox"
-        Me.CatBox.Size = New System.Drawing.Size(110, 531)
+        Me.CatBox.Size = New System.Drawing.Size(110, 765)
         Me.CatBox.TabIndex = 3
         Me.CatBox.TabStop = False
         '
@@ -184,7 +209,7 @@ Partial Class SalesForm
         'CtrlBox
         '
         Me.CtrlBox.Dock = System.Windows.Forms.DockStyle.Bottom
-        Me.CtrlBox.Location = New System.Drawing.Point(0, 531)
+        Me.CtrlBox.Location = New System.Drawing.Point(0, 765)
         Me.CtrlBox.Name = "CtrlBox"
         Me.CtrlBox.Size = New System.Drawing.Size(669, 100)
         Me.CtrlBox.TabIndex = 0
@@ -198,22 +223,78 @@ Partial Class SalesForm
         Me.ItemPnl.Size = New System.Drawing.Size(516, 518)
         Me.ItemPnl.TabIndex = 4
         '
-        'PriceLstBox
+        'ShapeContainer1
         '
-        Me.PriceLstBox.Dock = System.Windows.Forms.DockStyle.Right
-        Me.PriceLstBox.Font = New System.Drawing.Font("Microsoft Sans Serif", 15.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.PriceLstBox.FormattingEnabled = True
-        Me.PriceLstBox.ItemHeight = 25
-        Me.PriceLstBox.Location = New System.Drawing.Point(350, 16)
-        Me.PriceLstBox.Name = "PriceLstBox"
-        Me.PriceLstBox.Size = New System.Drawing.Size(89, 276)
-        Me.PriceLstBox.TabIndex = 7
+        Me.ShapeContainer1.Location = New System.Drawing.Point(3, 16)
+        Me.ShapeContainer1.Margin = New System.Windows.Forms.Padding(0)
+        Me.ShapeContainer1.Name = "ShapeContainer1"
+        Me.ShapeContainer1.Shapes.AddRange(New Microsoft.VisualBasic.PowerPacks.Shape() {Me.LineShape1})
+        Me.ShapeContainer1.Size = New System.Drawing.Size(104, 746)
+        Me.ShapeContainer1.TabIndex = 10
+        Me.ShapeContainer1.TabStop = False
+        '
+        'LineShape1
+        '
+        Me.LineShape1.Name = "LineShape1"
+        Me.LineShape1.X1 = 0
+        Me.LineShape1.X2 = 104
+        Me.LineShape1.Y1 = 580
+        Me.LineShape1.Y2 = 580
+        '
+        'DsctBtn
+        '
+        Me.DsctBtn.Location = New System.Drawing.Point(3, 596)
+        Me.DsctBtn.Name = "DsctBtn"
+        Me.DsctBtn.Size = New System.Drawing.Size(104, 79)
+        Me.DsctBtn.TabIndex = 11
+        Me.DsctBtn.Text = "Discount Button"
+        Me.DsctBtn.UseVisualStyleBackColor = True
+        '
+        'SubTotalLbl
+        '
+        Me.SubTotalLbl.AutoSize = True
+        Me.SubTotalLbl.Font = New System.Drawing.Font("Microsoft Sans Serif", 15.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.SubTotalLbl.Location = New System.Drawing.Point(7, 20)
+        Me.SubTotalLbl.Name = "SubTotalLbl"
+        Me.SubTotalLbl.Size = New System.Drawing.Size(90, 25)
+        Me.SubTotalLbl.TabIndex = 0
+        Me.SubTotalLbl.Text = "Subtotal:"
+        '
+        'TotalLabel
+        '
+        Me.TotalLabel.AutoSize = True
+        Me.TotalLabel.Font = New System.Drawing.Font("Microsoft Sans Serif", 15.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.TotalLabel.Location = New System.Drawing.Point(9, 70)
+        Me.TotalLabel.Name = "TotalLabel"
+        Me.TotalLabel.Size = New System.Drawing.Size(62, 25)
+        Me.TotalLabel.TabIndex = 1
+        Me.TotalLabel.Text = "Total:"
+        '
+        'STBlankLbl
+        '
+        Me.STBlankLbl.AutoSize = True
+        Me.STBlankLbl.Font = New System.Drawing.Font("Microsoft Sans Serif", 15.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.STBlankLbl.Location = New System.Drawing.Point(103, 20)
+        Me.STBlankLbl.Name = "STBlankLbl"
+        Me.STBlankLbl.Size = New System.Drawing.Size(71, 25)
+        Me.STBlankLbl.TabIndex = 2
+        Me.STBlankLbl.Text = "Label3"
+        '
+        'TBlankLbl
+        '
+        Me.TBlankLbl.AutoSize = True
+        Me.TBlankLbl.Font = New System.Drawing.Font("Microsoft Sans Serif", 15.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.TBlankLbl.Location = New System.Drawing.Point(103, 70)
+        Me.TBlankLbl.Name = "TBlankLbl"
+        Me.TBlankLbl.Size = New System.Drawing.Size(71, 25)
+        Me.TBlankLbl.TabIndex = 3
+        Me.TBlankLbl.Text = "Label4"
         '
         'SalesForm
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(6.0!, 13.0!)
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
-        Me.ClientSize = New System.Drawing.Size(1111, 631)
+        Me.ClientSize = New System.Drawing.Size(1111, 865)
         Me.Controls.Add(Me.ItemPnl)
         Me.Controls.Add(Me.CatBox)
         Me.Controls.Add(Me.CtrlBox)
@@ -224,6 +305,8 @@ Partial Class SalesForm
         Me.Text = "SalesForm"
         Me.WindowState = System.Windows.Forms.FormWindowState.Maximized
         Me.CartGrpBox.ResumeLayout(False)
+        Me.ChkoutCtrlBox.ResumeLayout(False)
+        Me.ChkoutCtrlBox.PerformLayout()
         Me.CatBox.ResumeLayout(False)
         Me.CatBox.PerformLayout()
         Me.ResumeLayout(False)
@@ -245,6 +328,13 @@ Partial Class SalesForm
     Friend WithEvents CartCtrlBox As System.Windows.Forms.GroupBox
     Friend WithEvents ItemPnl As System.Windows.Forms.Panel
     Friend WithEvents PriceLstBox As System.Windows.Forms.ListBox
+    Friend WithEvents TBlankLbl As System.Windows.Forms.Label
+    Friend WithEvents STBlankLbl As System.Windows.Forms.Label
+    Friend WithEvents TotalLabel As System.Windows.Forms.Label
+    Friend WithEvents SubTotalLbl As System.Windows.Forms.Label
+    Friend WithEvents DsctBtn As System.Windows.Forms.Button
+    Friend WithEvents ShapeContainer1 As Microsoft.VisualBasic.PowerPacks.ShapeContainer
+    Friend WithEvents LineShape1 As Microsoft.VisualBasic.PowerPacks.LineShape
     'Friend WithEvents Button1 As System.Windows.Forms.Button
 
 End Class
