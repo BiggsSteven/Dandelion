@@ -70,14 +70,15 @@ Public Class DatabaseClass
         sqlDa = New SqlDataAdapter(sqlText, sqlCon)
         dt.Clear()
         sqlDa.Fill(dt)
+        If (dt.Rows.Count = 1) Then
+            Dim name As String = dt.Rows(0).Item(1)
+            Dim Price As Double = dt.Rows(0).Item(2)
+            Dim tax As Double = dt.Rows(0).Item(3)
 
-        Dim name As String = dt.Rows(0).Item(1)
-        Dim Price As Double = dt.Rows(0).Item(2)
-        Dim tax As Double = dt.Rows(0).Item(3)
+            Dim itemFound As CartItem = New CartItem()
+            itemFound.setValues(barcode, name, Price, tax)
+            Return itemFound
+        End If
 
-        Dim itemFound As CartItem = New CartItem()
-        itemFound.setValues(barcode, name, Price, tax)
-
-        Return itemFound
     End Function
 End Class
