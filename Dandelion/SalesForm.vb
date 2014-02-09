@@ -14,9 +14,7 @@ Public Class SalesForm
         mainRegister.Database()
         currentCart.cartIntialize()
         changeCat(1) 'Start with first category open by default
-
-
-
+        SearchTxtBox.Focus()
 
     End Sub
 
@@ -42,12 +40,26 @@ Public Class SalesForm
     Private Sub Other_Click(sender As Object, e As EventArgs) Handles Other.Click
         changeCat(7)
     End Sub
+
+    Private Sub SearchTxtBox_KeyUp(ByVal sender As Object, ByVal e As KeyEventArgs) Handles SearchTxtBox.KeyUp
+        If e.KeyCode = Keys.Enter Then
+            Dim BCsearched As String = SearchTxtBox.Text
+            currentCart.addItem(BCsearched)
+            SearchTxtBox.Text = ""
+        End If
+    End Sub
+
     Private Sub changeCat(ByVal choiceCat As Integer)
 
-
-
-
         mainRegister.getItemList(choiceCat, ItemList)
+
+
+
+        addBtnToPnl()
+
+    End Sub
+
+    Public Sub addBtnToPnl()
 
         'To reset the buttons, the program disposes of the panel and recreates it
         ItemPnl.Dispose()
@@ -58,11 +70,6 @@ Public Class SalesForm
         ItemPnl.Height = CtrlBox.Top
         Me.Controls.Add(ItemPnl)
 
-        addBtnToPnl()
-
-    End Sub
-
-    Public Sub addBtnToPnl()
         'sets variables to be used to place the buttons without overlap of the objects
         Dim boxSize As Double = ItemPnl.Size.Width()
         Dim rowCount As Integer = ItemList.Length
@@ -88,8 +95,12 @@ Public Class SalesForm
             AddHandler ItemList(increCount).Click, AddressOf ItemList(increCount).addToCart
             increCount += 1
             column += 1
-
         Loop
     End Sub
 
+
+
+    Private Sub SearchTxtBox_LostFocus(sender As Object, e As EventArgs) Handles SearchTxtBox.LostFocus
+        SearchTxtBox.Focus()
+    End Sub
 End Class

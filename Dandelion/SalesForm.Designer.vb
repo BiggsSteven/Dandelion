@@ -28,8 +28,13 @@ Partial Class SalesForm
         Me.PriceLstBox = New System.Windows.Forms.ListBox()
         Me.CartCtrlBox = New System.Windows.Forms.GroupBox()
         Me.ChkoutCtrlBox = New System.Windows.Forms.GroupBox()
+        Me.TBlankLbl = New System.Windows.Forms.Label()
+        Me.STBlankLbl = New System.Windows.Forms.Label()
+        Me.TotalLabel = New System.Windows.Forms.Label()
+        Me.SubTotalLbl = New System.Windows.Forms.Label()
         Me.SearchTxtBox = New System.Windows.Forms.TextBox()
         Me.CatBox = New System.Windows.Forms.GroupBox()
+        Me.DsctBtn = New System.Windows.Forms.Button()
         Me.Other = New System.Windows.Forms.Button()
         Me.NonConsumBtn = New System.Windows.Forms.Button()
         Me.CigBtn = New System.Windows.Forms.Button()
@@ -37,15 +42,10 @@ Partial Class SalesForm
         Me.BeverageBtn = New System.Windows.Forms.Button()
         Me.CookedBtn = New System.Windows.Forms.Button()
         Me.ColdBtn = New System.Windows.Forms.Button()
-        Me.CtrlBox = New System.Windows.Forms.GroupBox()
-        Me.ItemPnl = New System.Windows.Forms.Panel()
         Me.ShapeContainer1 = New Microsoft.VisualBasic.PowerPacks.ShapeContainer()
         Me.LineShape1 = New Microsoft.VisualBasic.PowerPacks.LineShape()
-        Me.DsctBtn = New System.Windows.Forms.Button()
-        Me.SubTotalLbl = New System.Windows.Forms.Label()
-        Me.TotalLabel = New System.Windows.Forms.Label()
-        Me.STBlankLbl = New System.Windows.Forms.Label()
-        Me.TBlankLbl = New System.Windows.Forms.Label()
+        Me.CtrlBox = New System.Windows.Forms.GroupBox()
+        Me.ItemPnl = New System.Windows.Forms.Panel()
         Me.CartGrpBox.SuspendLayout()
         Me.ChkoutCtrlBox.SuspendLayout()
         Me.CatBox.SuspendLayout()
@@ -109,6 +109,46 @@ Partial Class SalesForm
         Me.ChkoutCtrlBox.TabIndex = 3
         Me.ChkoutCtrlBox.TabStop = False
         '
+        'TBlankLbl
+        '
+        Me.TBlankLbl.AutoSize = True
+        Me.TBlankLbl.Font = New System.Drawing.Font("Microsoft Sans Serif", 15.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.TBlankLbl.Location = New System.Drawing.Point(103, 70)
+        Me.TBlankLbl.Name = "TBlankLbl"
+        Me.TBlankLbl.Size = New System.Drawing.Size(71, 25)
+        Me.TBlankLbl.TabIndex = 3
+        Me.TBlankLbl.Text = "Label4"
+        '
+        'STBlankLbl
+        '
+        Me.STBlankLbl.AutoSize = True
+        Me.STBlankLbl.Font = New System.Drawing.Font("Microsoft Sans Serif", 15.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.STBlankLbl.Location = New System.Drawing.Point(103, 20)
+        Me.STBlankLbl.Name = "STBlankLbl"
+        Me.STBlankLbl.Size = New System.Drawing.Size(71, 25)
+        Me.STBlankLbl.TabIndex = 2
+        Me.STBlankLbl.Text = "Label3"
+        '
+        'TotalLabel
+        '
+        Me.TotalLabel.AutoSize = True
+        Me.TotalLabel.Font = New System.Drawing.Font("Microsoft Sans Serif", 15.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.TotalLabel.Location = New System.Drawing.Point(9, 70)
+        Me.TotalLabel.Name = "TotalLabel"
+        Me.TotalLabel.Size = New System.Drawing.Size(62, 25)
+        Me.TotalLabel.TabIndex = 1
+        Me.TotalLabel.Text = "Total:"
+        '
+        'SubTotalLbl
+        '
+        Me.SubTotalLbl.AutoSize = True
+        Me.SubTotalLbl.Font = New System.Drawing.Font("Microsoft Sans Serif", 15.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.SubTotalLbl.Location = New System.Drawing.Point(7, 20)
+        Me.SubTotalLbl.Name = "SubTotalLbl"
+        Me.SubTotalLbl.Size = New System.Drawing.Size(90, 25)
+        Me.SubTotalLbl.TabIndex = 0
+        Me.SubTotalLbl.Text = "Subtotal:"
+        '
         'SearchTxtBox
         '
         Me.SearchTxtBox.Dock = System.Windows.Forms.DockStyle.Top
@@ -135,6 +175,15 @@ Partial Class SalesForm
         Me.CatBox.Size = New System.Drawing.Size(110, 765)
         Me.CatBox.TabIndex = 3
         Me.CatBox.TabStop = False
+        '
+        'DsctBtn
+        '
+        Me.DsctBtn.Location = New System.Drawing.Point(3, 596)
+        Me.DsctBtn.Name = "DsctBtn"
+        Me.DsctBtn.Size = New System.Drawing.Size(104, 79)
+        Me.DsctBtn.TabIndex = 11
+        Me.DsctBtn.Text = "Discount Button"
+        Me.DsctBtn.UseVisualStyleBackColor = True
         '
         'Other
         '
@@ -206,23 +255,6 @@ Partial Class SalesForm
         Me.ColdBtn.Text = "Cold Food"
         Me.ColdBtn.UseVisualStyleBackColor = True
         '
-        'CtrlBox
-        '
-        Me.CtrlBox.Dock = System.Windows.Forms.DockStyle.Bottom
-        Me.CtrlBox.Location = New System.Drawing.Point(0, 765)
-        Me.CtrlBox.Name = "CtrlBox"
-        Me.CtrlBox.Size = New System.Drawing.Size(669, 100)
-        Me.CtrlBox.TabIndex = 0
-        Me.CtrlBox.TabStop = False
-        '
-        'ItemPnl
-        '
-        Me.ItemPnl.AutoScroll = True
-        Me.ItemPnl.Location = New System.Drawing.Point(132, 13)
-        Me.ItemPnl.Name = "ItemPnl"
-        Me.ItemPnl.Size = New System.Drawing.Size(516, 518)
-        Me.ItemPnl.TabIndex = 4
-        '
         'ShapeContainer1
         '
         Me.ShapeContainer1.Location = New System.Drawing.Point(3, 16)
@@ -241,54 +273,22 @@ Partial Class SalesForm
         Me.LineShape1.Y1 = 580
         Me.LineShape1.Y2 = 580
         '
-        'DsctBtn
+        'CtrlBox
         '
-        Me.DsctBtn.Location = New System.Drawing.Point(3, 596)
-        Me.DsctBtn.Name = "DsctBtn"
-        Me.DsctBtn.Size = New System.Drawing.Size(104, 79)
-        Me.DsctBtn.TabIndex = 11
-        Me.DsctBtn.Text = "Discount Button"
-        Me.DsctBtn.UseVisualStyleBackColor = True
+        Me.CtrlBox.Dock = System.Windows.Forms.DockStyle.Bottom
+        Me.CtrlBox.Location = New System.Drawing.Point(0, 765)
+        Me.CtrlBox.Name = "CtrlBox"
+        Me.CtrlBox.Size = New System.Drawing.Size(669, 100)
+        Me.CtrlBox.TabIndex = 0
+        Me.CtrlBox.TabStop = False
         '
-        'SubTotalLbl
+        'ItemPnl
         '
-        Me.SubTotalLbl.AutoSize = True
-        Me.SubTotalLbl.Font = New System.Drawing.Font("Microsoft Sans Serif", 15.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.SubTotalLbl.Location = New System.Drawing.Point(7, 20)
-        Me.SubTotalLbl.Name = "SubTotalLbl"
-        Me.SubTotalLbl.Size = New System.Drawing.Size(90, 25)
-        Me.SubTotalLbl.TabIndex = 0
-        Me.SubTotalLbl.Text = "Subtotal:"
-        '
-        'TotalLabel
-        '
-        Me.TotalLabel.AutoSize = True
-        Me.TotalLabel.Font = New System.Drawing.Font("Microsoft Sans Serif", 15.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.TotalLabel.Location = New System.Drawing.Point(9, 70)
-        Me.TotalLabel.Name = "TotalLabel"
-        Me.TotalLabel.Size = New System.Drawing.Size(62, 25)
-        Me.TotalLabel.TabIndex = 1
-        Me.TotalLabel.Text = "Total:"
-        '
-        'STBlankLbl
-        '
-        Me.STBlankLbl.AutoSize = True
-        Me.STBlankLbl.Font = New System.Drawing.Font("Microsoft Sans Serif", 15.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.STBlankLbl.Location = New System.Drawing.Point(103, 20)
-        Me.STBlankLbl.Name = "STBlankLbl"
-        Me.STBlankLbl.Size = New System.Drawing.Size(71, 25)
-        Me.STBlankLbl.TabIndex = 2
-        Me.STBlankLbl.Text = "Label3"
-        '
-        'TBlankLbl
-        '
-        Me.TBlankLbl.AutoSize = True
-        Me.TBlankLbl.Font = New System.Drawing.Font("Microsoft Sans Serif", 15.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.TBlankLbl.Location = New System.Drawing.Point(103, 70)
-        Me.TBlankLbl.Name = "TBlankLbl"
-        Me.TBlankLbl.Size = New System.Drawing.Size(71, 25)
-        Me.TBlankLbl.TabIndex = 3
-        Me.TBlankLbl.Text = "Label4"
+        Me.ItemPnl.AutoScroll = True
+        Me.ItemPnl.Location = New System.Drawing.Point(132, 13)
+        Me.ItemPnl.Name = "ItemPnl"
+        Me.ItemPnl.Size = New System.Drawing.Size(516, 518)
+        Me.ItemPnl.TabIndex = 4
         '
         'SalesForm
         '

@@ -50,7 +50,7 @@ Public Class DatabaseClass
         ReDim ItemList(rowCount - 1)
 
 
-        sqlText = "SELECT Barcode, Name FROM " & ConfigurationSettings.AppSettings("Item") & " WHERE Category = '" & column & "'"
+        sqlText = "SELECT Barcode, ItemName FROM " & ConfigurationSettings.AppSettings("Item") & " WHERE Category = '" & column & "'"
         sqlDa = New SqlDataAdapter(sqlText, sqlCon)
         dt.Clear()
         sqlDa.Fill(dt)
@@ -66,7 +66,7 @@ Public Class DatabaseClass
 
     Public Function findDBItem(ByVal barcode As String)
 
-        sqlText = "SELECT Barcode, Name, Price, Tax FROM " & ConfigurationSettings.AppSettings("Item") & " WHERE Barcode = '" & barcode & "'"
+        sqlText = "SELECT Barcode, ItemName, Price, Tax FROM " & ConfigurationSettings.AppSettings("Item") & " WHERE Barcode = '" & barcode & "'"
         sqlDa = New SqlDataAdapter(sqlText, sqlCon)
         dt.Clear()
         sqlDa.Fill(dt)

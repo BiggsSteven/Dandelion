@@ -18,16 +18,38 @@
 
     Public Sub addItem(ByVal barcode As String)
 
+        Dim position As Integer = 0
+        If (checkDup(barcode, position)) Then
+            inCheckOut(position).Quantity += 1
+            SalesForm.CartLstBox.Items.Item(position) = inCheckOut(position).ItemName & " x " & inCheckOut(position).Quantity
+        Else
+            ReDim Preserve inCheckOut(arraySize)
+            inCheckOut(arraySize) = SalesForm.mainRegister.findDBItem(barcode)
+            SalesForm.CartLstBox.Items.Add(inCheckOut(arraySize).ItemName)
+            SalesForm.PriceLstBox.Items.Add(Format(inCheckOut(arraySize).price, "c"))
+        End If
 
-        ReDim Preserve inCheckOut(arraySize)
 
-        inCheckOut(arraySize) = SalesForm.mainRegister.findDBItem(barcode)
 
-        SalesForm.CartLstBox.Items.Add(inCheckOut(arraySize).ItemName)
-        SalesForm.PriceLstBox.Items.Add(Format(inCheckOut(arraySize).price, "c"))
         calculateSubTotal()
         calculateTotal()
         arraySize = inCheckOut.Length()
+
+    End Sub
+
+    Public Function checkDup(ByVal sbarcode As String, ByRef sPosition As Integer)
+        Dim counter As Integer = 0
+        Do While (counter < arraySize)
+            If (sbarcode = inCheckOut(counter).barcode) Then
+                sPosition = counter
+                Return True
+            End If
+            counter += 1
+        Loop
+        Return False
+    End Function
+
+    Public Sub increItem(counter)
 
     End Sub
 
@@ -36,7 +58,7 @@
         subTotal = 0
         Dim counter As Integer = 0
         Do While (counter < inCheckOut.Length())
-            subTotal += inCheckOut(counter).price
+            subTotal += (inCheckOut(counter).price * inCheckOut(counter).Quantity)
             counter += 1
         Loop
 
@@ -47,7 +69,7 @@
         total = 0
         Dim counter As Integer = 0
         Do While (counter < inCheckOut.Length())
-            total += (inCheckOut(counter).price * (1 + inCheckOut(counter).tax))
+            total += ((inCheckOut(counter).price * inCheckOut(counter).Quantity) * (1 + inCheckOut(counter).tax))
             counter += 1
         Loop
         SalesForm.TBlankLbl.Text = Format(total, "c")

@@ -1,7 +1,7 @@
 ﻿Public Class CartItem
     Public barcode As String
     Public ItemName As String
-    Public Quantitiy As Integer
+    Public Quantity As Integer
 
     Public price As Double
     Public tax As Double
@@ -11,6 +11,7 @@
         ItemName = sItemName
         price = sPrice
         tax = sTax
+        Quantity = 1
     End Sub
 
 
