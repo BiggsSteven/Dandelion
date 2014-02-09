@@ -53,8 +53,6 @@ Public Class SalesForm
 
         mainRegister.getItemList(choiceCat, ItemList)
 
-
-
         addBtnToPnl()
 
     End Sub

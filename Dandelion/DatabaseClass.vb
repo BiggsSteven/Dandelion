@@ -71,13 +71,19 @@ Public Class DatabaseClass
         dt.Clear()
         sqlDa.Fill(dt)
 
-        Dim name As String = dt.Rows(0).Item(1)
-        Dim Price As Double = dt.Rows(0).Item(2)
-        Dim tax As Double = dt.Rows(0).Item(3)
-
+        Dim name As String = ""
+        Dim Price As Double
+        Dim tax As Double
         Dim itemFound As CartItem = New CartItem()
-        itemFound.setValues(barcode, name, Price, tax)
 
-        Return itemFound
+        If Not (dt.Rows.Count = 0) Then
+            name = dt.Rows(0).Item(1)
+            Price = dt.Rows(0).Item(2)
+            tax = dt.Rows(0).Item(3)
+            itemFound.setValues(barcode, name, Price, tax)
+            Return itemFound
+        End If
+
+
     End Function
 End Class

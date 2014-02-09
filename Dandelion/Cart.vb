@@ -18,23 +18,23 @@
 
     Public Sub addItem(ByVal barcode As String)
 
-        Dim position As Integer = 0
-        If (checkDup(barcode, position)) Then
-            inCheckOut(position).Quantity += 1
-            SalesForm.CartLstBox.Items.Item(position) = inCheckOut(position).ItemName & " x " & inCheckOut(position).Quantity
-        Else
-            ReDim Preserve inCheckOut(arraySize)
-            inCheckOut(arraySize) = SalesForm.mainRegister.findDBItem(barcode)
-            SalesForm.CartLstBox.Items.Add(inCheckOut(arraySize).ItemName)
-            SalesForm.PriceLstBox.Items.Add(Format(inCheckOut(arraySize).price, "c"))
+        Dim tempCartItem As CartItem = SalesForm.mainRegister.findDBItem(barcode)
+        If Not (IsNothing(tempCartItem)) Then
+            Dim position As Integer = 0
+            If (checkDup(barcode, position)) Then
+                inCheckOut(position).Quantity += 1
+                SalesForm.CartLstBox.Items.Item(position) = inCheckOut(position).ItemName & " x " & inCheckOut(position).Quantity
+            Else
+                ReDim Preserve inCheckOut(arraySize)
+                inCheckOut(arraySize) = tempCartItem
+                SalesForm.CartLstBox.Items.Add(inCheckOut(arraySize).ItemName)
+                SalesForm.PriceLstBox.Items.Add(Format(inCheckOut(arraySize).price, "c"))
+            End If
+
+            calculateSubTotal()
+            calculateTotal()
+            arraySize = inCheckOut.Length()
         End If
-
-
-
-        calculateSubTotal()
-        calculateTotal()
-        arraySize = inCheckOut.Length()
-
     End Sub
 
     Public Function checkDup(ByVal sbarcode As String, ByRef sPosition As Integer)
