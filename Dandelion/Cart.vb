@@ -22,18 +22,20 @@
         If (checkDup(barcode, position)) Then
             inCheckOut(position).Quantity += 1
             SalesForm.CartLstBox.Items.Item(position) = inCheckOut(position).ItemName & " x " & inCheckOut(position).Quantity
+            calculateSubTotal()
+            calculateTotal()
         Else
             ReDim Preserve inCheckOut(arraySize)
             inCheckOut(arraySize) = SalesForm.mainRegister.findDBItem(barcode)
-            SalesForm.CartLstBox.Items.Add(inCheckOut(arraySize).ItemName)
-            SalesForm.PriceLstBox.Items.Add(Format(inCheckOut(arraySize).price, "c"))
+            If Not (IsNothing(inCheckOut(inCheckOut.Length - 1))) Then
+                SalesForm.CartLstBox.Items.Add(inCheckOut(arraySize).ItemName)
+                SalesForm.PriceLstBox.Items.Add(Format(inCheckOut(arraySize).price, "c"))
+                calculateSubTotal()
+                calculateTotal()
+                arraySize = inCheckOut.Length()
+            End If
+
         End If
-
-
-
-        calculateSubTotal()
-        calculateTotal()
-        arraySize = inCheckOut.Length()
 
     End Sub
 
