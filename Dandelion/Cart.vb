@@ -12,7 +12,6 @@
         arraySize = 0
         SalesForm.STBlankLbl.Text = Format(total, "c")
         SalesForm.TBlankLbl.Text = Format(total, "c")
-        ReDim inCheckOut(0)
 
 
     End Sub
@@ -26,14 +25,14 @@
             calculateSubTotal()
             calculateTotal()
         Else
-            ReDim Preserve inCheckOut(inCheckOut.Length - 1)
+            ReDim Preserve inCheckOut(arraySize)
             inCheckOut(arraySize) = SalesForm.mainRegister.findDBItem(barcode)
             If Not (IsNothing(inCheckOut(inCheckOut.Length - 1))) Then
                 SalesForm.CartLstBox.Items.Add(inCheckOut(arraySize).ItemName)
                 SalesForm.PriceLstBox.Items.Add(Format(inCheckOut(arraySize).price, "c"))
                 calculateSubTotal()
                 calculateTotal()
-
+                arraySize = inCheckOut.Length()
             End If
 
         End If
@@ -41,8 +40,8 @@
     End Sub
 
     Public Function checkDup(ByVal sbarcode As String, ByRef sPosition As Integer)
-        Dim counter As Integer = 1
-        Do While (counter < inCheckOut.Length)
+        Dim counter As Integer = 0
+        Do While (counter < arraySize)
             If (sbarcode = inCheckOut(counter).barcode) Then
                 sPosition = counter
                 Return True
