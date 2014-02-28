@@ -71,6 +71,12 @@
     <Import Include="System.Threading.Tasks" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="AgeVerificationForm.Designer.vb">
+      <DependentUpon>AgeVerificationForm.vb</DependentUpon>
+    </Compile>
+    <Compile Include="AgeVerificationForm.vb">
+      <SubType>Form</SubType>
+    </Compile>
     <Compile Include="Cart.vb" />
     <Compile Include="CartItem.vb" />
     <Compile Include="DatabaseClass.vb" />
@@ -101,6 +107,9 @@
     </Compile>
   </ItemGroup>
   <ItemGroup>
+    <EmbeddedResource Include="AgeVerificationForm.resx">
+      <DependentUpon>AgeVerificationForm.vb</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="SalesForm.resx">
       <DependentUpon>SalesForm.vb</DependentUpon>
     </EmbeddedResource>

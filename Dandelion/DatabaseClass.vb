@@ -27,21 +27,30 @@ Public Class DatabaseClass
     End Sub
     Public Sub getItemList(ByVal catSelected As Integer, ByRef ItemList() As ItemButton)
         Dim column As String = ""
+
+        'ColdFood 1
+        'CookedFood 2
+        'Beverage 3
+        'Alcohol 4
+        'Cigarettes 5
+        'NonCon 6
+        'Other 7
+
         Select Case catSelected
             Case 1
-                column = "ColdFood"
+                column = "1"
             Case 2
-                column = "CookedFood"
+                column = "2"
             Case 3
-                column = "Beverage"
+                column = "3"
             Case 4
-                column = "Alcohol"
+                column = "4"
             Case 5
-                column = "Cigarettes"
+                column = "5"
             Case 6
-                column = "NonCon"
+                column = "6"
             Case 7
-                column = "Other"
+                column = "7"
         End Select
 
         sqlText = "SELECT COUNT(*) From " & ConfigurationSettings.AppSettings("Item") & " WHERE Category = '" & column & "'"
@@ -66,21 +75,23 @@ Public Class DatabaseClass
 
     Public Function findDBItem(ByVal barcode As String)
 
-        sqlText = "SELECT Barcode, ItemName, Price, Tax FROM " & ConfigurationSettings.AppSettings("Item") & " WHERE Barcode = '" & barcode & "'"
+        sqlText = "SELECT I.Barcode, I.ItemName, I.Price, T.TaxType, T.TaxRate FROM " & ConfigurationSettings.AppSettings("Item") & " as I JOIN " & ConfigurationSettings.AppSettings("Tax") & " as T ON I.Category = T.CategoryNum WHERE I.Barcode = '" & barcode & "'"
         sqlDa = New SqlDataAdapter(sqlText, sqlCon)
         dt.Clear()
         sqlDa.Fill(dt)
 
         Dim name As String = ""
         Dim Price As Double
-        Dim tax As Double
+        Dim taxType As String = ""
+        Dim taxRate As Double
         Dim itemFound As CartItem = New CartItem()
 
         If Not (dt.Rows.Count = 0) Then
             name = dt.Rows(0).Item(1)
             Price = dt.Rows(0).Item(2)
-            tax = dt.Rows(0).Item(3)
-            itemFound.setValues(barcode, name, Price, tax)
+            taxType = dt.Rows(0).Item(3)
+            taxRate = dt.Rows(0).Item(4)
+            itemFound.setValues(barcode, name, Price, taxType, taxRate)
             Return itemFound
         End If
 

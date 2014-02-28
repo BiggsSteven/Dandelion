@@ -5,12 +5,14 @@
 
     Public price As Double
     Public tax As Double
+    Public taxType As String
 
-    Public Sub setValues(ByVal sBarcode As String, ByVal sItemName As String, ByVal sPrice As Double, ByVal sTax As Double)
+    Public Sub setValues(ByVal sBarcode As String, ByVal sItemName As String, ByVal sPrice As Double, ByVal sTaxType As String, ByVal sTaxRate As Double)
         barcode = sBarcode
         ItemName = sItemName
         price = sPrice
-        tax = sTax
+        tax = sTaxRate
+        taxType = sTaxType
         Quantity = 1
     End Sub
 
