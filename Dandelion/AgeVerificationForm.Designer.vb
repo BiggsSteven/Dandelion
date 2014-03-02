@@ -22,73 +22,49 @@ Partial Class AgeVerificationForm
     'Do not modify it using the code editor.
     <System.Diagnostics.DebuggerStepThrough()> _
     Private Sub InitializeComponent()
-        Me.ComboBox1 = New System.Windows.Forms.ComboBox()
-        Me.ComboBox2 = New System.Windows.Forms.ComboBox()
-        Me.ComboBox3 = New System.Windows.Forms.ComboBox()
-        Me.Button1 = New System.Windows.Forms.Button()
-        Me.Button2 = New System.Windows.Forms.Button()
+        Me.InputConfirmBtn = New System.Windows.Forms.Button()
+        Me.QuickConfirmBtn = New System.Windows.Forms.Button()
         Me.Label1 = New System.Windows.Forms.Label()
         Me.Label2 = New System.Windows.Forms.Label()
         Me.Label3 = New System.Windows.Forms.Label()
         Me.SplitContainer1 = New System.Windows.Forms.SplitContainer()
+        Me.YrTxtBox = New System.Windows.Forms.TextBox()
+        Me.DayTextBox = New System.Windows.Forms.TextBox()
+        Me.MnthTxtBox = New System.Windows.Forms.TextBox()
         Me.Label4 = New System.Windows.Forms.Label()
+        Me.MaskedTextBox1 = New System.Windows.Forms.MaskedTextBox()
         CType(Me.SplitContainer1, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.SplitContainer1.Panel1.SuspendLayout()
         Me.SplitContainer1.Panel2.SuspendLayout()
         Me.SplitContainer1.SuspendLayout()
         Me.SuspendLayout()
         '
-        'ComboBox1
+        'InputConfirmBtn
         '
-        Me.ComboBox1.FormattingEnabled = True
-        Me.ComboBox1.Items.AddRange(New Object() {"January", "Febuary", "March", "April", "May", "June", "July", "August", "September", "October", "November", "December"})
-        Me.ComboBox1.Location = New System.Drawing.Point(12, 36)
-        Me.ComboBox1.Name = "ComboBox1"
-        Me.ComboBox1.Size = New System.Drawing.Size(92, 21)
-        Me.ComboBox1.TabIndex = 0
+        Me.InputConfirmBtn.Location = New System.Drawing.Point(110, 91)
+        Me.InputConfirmBtn.Name = "InputConfirmBtn"
+        Me.InputConfirmBtn.Size = New System.Drawing.Size(71, 50)
+        Me.InputConfirmBtn.TabIndex = 4
+        Me.InputConfirmBtn.Text = "Confirm"
+        Me.InputConfirmBtn.UseVisualStyleBackColor = True
         '
-        'ComboBox2
+        'QuickConfirmBtn
         '
-        Me.ComboBox2.FormattingEnabled = True
-        Me.ComboBox2.Location = New System.Drawing.Point(110, 36)
-        Me.ComboBox2.Name = "ComboBox2"
-        Me.ComboBox2.Size = New System.Drawing.Size(71, 21)
-        Me.ComboBox2.TabIndex = 1
-        '
-        'ComboBox3
-        '
-        Me.ComboBox3.FormattingEnabled = True
-        Me.ComboBox3.Location = New System.Drawing.Point(187, 36)
-        Me.ComboBox3.Name = "ComboBox3"
-        Me.ComboBox3.Size = New System.Drawing.Size(85, 21)
-        Me.ComboBox3.TabIndex = 2
-        '
-        'Button1
-        '
-        Me.Button1.Location = New System.Drawing.Point(110, 91)
-        Me.Button1.Name = "Button1"
-        Me.Button1.Size = New System.Drawing.Size(71, 50)
-        Me.Button1.TabIndex = 4
-        Me.Button1.Text = "Confirm"
-        Me.Button1.UseVisualStyleBackColor = True
-        '
-        'Button2
-        '
-        Me.Button2.Location = New System.Drawing.Point(113, 53)
-        Me.Button2.Name = "Button2"
-        Me.Button2.Size = New System.Drawing.Size(71, 50)
-        Me.Button2.TabIndex = 5
-        Me.Button2.Text = "Confirm"
-        Me.Button2.UseVisualStyleBackColor = True
+        Me.QuickConfirmBtn.Location = New System.Drawing.Point(113, 53)
+        Me.QuickConfirmBtn.Name = "QuickConfirmBtn"
+        Me.QuickConfirmBtn.Size = New System.Drawing.Size(71, 50)
+        Me.QuickConfirmBtn.TabIndex = 5
+        Me.QuickConfirmBtn.Text = "Confirm"
+        Me.QuickConfirmBtn.UseVisualStyleBackColor = True
         '
         'Label1
         '
         Me.Label1.AutoSize = True
         Me.Label1.Location = New System.Drawing.Point(12, 9)
         Me.Label1.Name = "Label1"
-        Me.Label1.Size = New System.Drawing.Size(128, 13)
+        Me.Label1.Size = New System.Drawing.Size(212, 13)
         Me.Label1.TabIndex = 6
-        Me.Label1.Text = "Enter Customers Birthday:"
+        Me.Label1.Text = "Enter Customers Birthday ( MM/DD/YYYY):"
         '
         'Label2
         '
@@ -110,6 +86,7 @@ Partial Class AgeVerificationForm
         '
         'SplitContainer1
         '
+        Me.SplitContainer1.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle
         Me.SplitContainer1.Dock = System.Windows.Forms.DockStyle.Fill
         Me.SplitContainer1.Location = New System.Drawing.Point(0, 0)
         Me.SplitContainer1.Name = "SplitContainer1"
@@ -117,21 +94,43 @@ Partial Class AgeVerificationForm
         '
         'SplitContainer1.Panel1
         '
+        Me.SplitContainer1.Panel1.Controls.Add(Me.MaskedTextBox1)
+        Me.SplitContainer1.Panel1.Controls.Add(Me.YrTxtBox)
+        Me.SplitContainer1.Panel1.Controls.Add(Me.DayTextBox)
+        Me.SplitContainer1.Panel1.Controls.Add(Me.MnthTxtBox)
         Me.SplitContainer1.Panel1.Controls.Add(Me.Label1)
-        Me.SplitContainer1.Panel1.Controls.Add(Me.ComboBox1)
-        Me.SplitContainer1.Panel1.Controls.Add(Me.ComboBox2)
-        Me.SplitContainer1.Panel1.Controls.Add(Me.ComboBox3)
-        Me.SplitContainer1.Panel1.Controls.Add(Me.Button1)
+        Me.SplitContainer1.Panel1.Controls.Add(Me.InputConfirmBtn)
         '
         'SplitContainer1.Panel2
         '
         Me.SplitContainer1.Panel2.Controls.Add(Me.Label4)
         Me.SplitContainer1.Panel2.Controls.Add(Me.Label2)
         Me.SplitContainer1.Panel2.Controls.Add(Me.Label3)
-        Me.SplitContainer1.Panel2.Controls.Add(Me.Button2)
+        Me.SplitContainer1.Panel2.Controls.Add(Me.QuickConfirmBtn)
         Me.SplitContainer1.Size = New System.Drawing.Size(286, 328)
         Me.SplitContainer1.SplitterDistance = 164
         Me.SplitContainer1.TabIndex = 9
+        '
+        'YrTxtBox
+        '
+        Me.YrTxtBox.Location = New System.Drawing.Point(175, 42)
+        Me.YrTxtBox.Name = "YrTxtBox"
+        Me.YrTxtBox.Size = New System.Drawing.Size(56, 20)
+        Me.YrTxtBox.TabIndex = 9
+        '
+        'DayTextBox
+        '
+        Me.DayTextBox.Location = New System.Drawing.Point(113, 42)
+        Me.DayTextBox.Name = "DayTextBox"
+        Me.DayTextBox.Size = New System.Drawing.Size(56, 20)
+        Me.DayTextBox.TabIndex = 8
+        '
+        'MnthTxtBox
+        '
+        Me.MnthTxtBox.Location = New System.Drawing.Point(51, 42)
+        Me.MnthTxtBox.Name = "MnthTxtBox"
+        Me.MnthTxtBox.Size = New System.Drawing.Size(56, 20)
+        Me.MnthTxtBox.TabIndex = 7
         '
         'Label4
         '
@@ -141,6 +140,14 @@ Partial Class AgeVerificationForm
         Me.Label4.Size = New System.Drawing.Size(39, 13)
         Me.Label4.TabIndex = 7
         Me.Label4.Text = "Label4"
+        '
+        'MaskedTextBox1
+        '
+        Me.MaskedTextBox1.Location = New System.Drawing.Point(15, 107)
+        Me.MaskedTextBox1.Mask = "00"
+        Me.MaskedTextBox1.Name = "MaskedTextBox1"
+        Me.MaskedTextBox1.Size = New System.Drawing.Size(80, 20)
+        Me.MaskedTextBox1.TabIndex = 10
         '
         'AgeVerificationForm
         '
@@ -159,14 +166,15 @@ Partial Class AgeVerificationForm
         Me.ResumeLayout(False)
 
     End Sub
-    Friend WithEvents ComboBox1 As System.Windows.Forms.ComboBox
-    Friend WithEvents ComboBox2 As System.Windows.Forms.ComboBox
-    Friend WithEvents ComboBox3 As System.Windows.Forms.ComboBox
-    Friend WithEvents Button1 As System.Windows.Forms.Button
-    Friend WithEvents Button2 As System.Windows.Forms.Button
+    Friend WithEvents InputConfirmBtn As System.Windows.Forms.Button
+    Friend WithEvents QuickConfirmBtn As System.Windows.Forms.Button
     Friend WithEvents Label1 As System.Windows.Forms.Label
     Friend WithEvents Label2 As System.Windows.Forms.Label
     Friend WithEvents Label3 As System.Windows.Forms.Label
     Friend WithEvents SplitContainer1 As System.Windows.Forms.SplitContainer
     Friend WithEvents Label4 As System.Windows.Forms.Label
+    Friend WithEvents YrTxtBox As System.Windows.Forms.TextBox
+    Friend WithEvents DayTextBox As System.Windows.Forms.TextBox
+    Friend WithEvents MnthTxtBox As System.Windows.Forms.TextBox
+    Friend WithEvents MaskedTextBox1 As System.Windows.Forms.MaskedTextBox
 End Class

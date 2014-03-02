@@ -26,6 +26,12 @@ Partial Class SalesForm
         Me.CartGrpBox = New System.Windows.Forms.GroupBox()
         Me.CartLstBox = New System.Windows.Forms.ListBox()
         Me.PriceLstBox = New System.Windows.Forms.ListBox()
+        Me.CartCtrlBox = New System.Windows.Forms.GroupBox()
+        Me.CnclBtn = New System.Windows.Forms.Button()
+        Me.ClrBtn = New System.Windows.Forms.Button()
+        Me.RemBtn = New System.Windows.Forms.Button()
+        Me.DecBtn = New System.Windows.Forms.Button()
+        Me.IncrBtn = New System.Windows.Forms.Button()
         Me.ChkoutCtrlBox = New System.Windows.Forms.GroupBox()
         Me.TBlankLbl = New System.Windows.Forms.Label()
         Me.STBlankLbl = New System.Windows.Forms.Label()
@@ -45,16 +51,10 @@ Partial Class SalesForm
         Me.LineShape1 = New Microsoft.VisualBasic.PowerPacks.LineShape()
         Me.CtrlBox = New System.Windows.Forms.GroupBox()
         Me.ItemPnl = New System.Windows.Forms.Panel()
-        Me.CartCtrlBox = New System.Windows.Forms.GroupBox()
-        Me.IncrBtn = New System.Windows.Forms.Button()
-        Me.DecBtn = New System.Windows.Forms.Button()
-        Me.RemBtn = New System.Windows.Forms.Button()
-        Me.ClrBtn = New System.Windows.Forms.Button()
-        Me.CnclBtn = New System.Windows.Forms.Button()
         Me.CartGrpBox.SuspendLayout()
+        Me.CartCtrlBox.SuspendLayout()
         Me.ChkoutCtrlBox.SuspendLayout()
         Me.CatBox.SuspendLayout()
-        Me.CartCtrlBox.SuspendLayout()
         Me.SuspendLayout()
         '
         'CartGrpBox
@@ -92,6 +92,71 @@ Partial Class SalesForm
         Me.PriceLstBox.Name = "PriceLstBox"
         Me.PriceLstBox.Size = New System.Drawing.Size(89, 510)
         Me.PriceLstBox.TabIndex = 7
+        '
+        'CartCtrlBox
+        '
+        Me.CartCtrlBox.Controls.Add(Me.CnclBtn)
+        Me.CartCtrlBox.Controls.Add(Me.ClrBtn)
+        Me.CartCtrlBox.Controls.Add(Me.RemBtn)
+        Me.CartCtrlBox.Controls.Add(Me.DecBtn)
+        Me.CartCtrlBox.Controls.Add(Me.IncrBtn)
+        Me.CartCtrlBox.Dock = System.Windows.Forms.DockStyle.Left
+        Me.CartCtrlBox.Location = New System.Drawing.Point(3, 16)
+        Me.CartCtrlBox.Name = "CartCtrlBox"
+        Me.CartCtrlBox.Size = New System.Drawing.Size(110, 510)
+        Me.CartCtrlBox.TabIndex = 6
+        Me.CartCtrlBox.TabStop = False
+        '
+        'CnclBtn
+        '
+        Me.CnclBtn.Dock = System.Windows.Forms.DockStyle.Top
+        Me.CnclBtn.Location = New System.Drawing.Point(3, 332)
+        Me.CnclBtn.Name = "CnclBtn"
+        Me.CnclBtn.Size = New System.Drawing.Size(104, 79)
+        Me.CnclBtn.TabIndex = 4
+        Me.CnclBtn.Text = "Exit" & Global.Microsoft.VisualBasic.ChrW(13) & Global.Microsoft.VisualBasic.ChrW(10) & "Cart Edit" & Global.Microsoft.VisualBasic.ChrW(13) & Global.Microsoft.VisualBasic.ChrW(10) & "Mode"
+        Me.CnclBtn.UseVisualStyleBackColor = True
+        Me.CnclBtn.Visible = False
+        '
+        'ClrBtn
+        '
+        Me.ClrBtn.Dock = System.Windows.Forms.DockStyle.Top
+        Me.ClrBtn.Location = New System.Drawing.Point(3, 253)
+        Me.ClrBtn.Name = "ClrBtn"
+        Me.ClrBtn.Size = New System.Drawing.Size(104, 79)
+        Me.ClrBtn.TabIndex = 3
+        Me.ClrBtn.Text = "Clear Cart"
+        Me.ClrBtn.UseVisualStyleBackColor = True
+        '
+        'RemBtn
+        '
+        Me.RemBtn.Dock = System.Windows.Forms.DockStyle.Top
+        Me.RemBtn.Location = New System.Drawing.Point(3, 174)
+        Me.RemBtn.Name = "RemBtn"
+        Me.RemBtn.Size = New System.Drawing.Size(104, 79)
+        Me.RemBtn.TabIndex = 2
+        Me.RemBtn.Text = "Remove"
+        Me.RemBtn.UseVisualStyleBackColor = True
+        '
+        'DecBtn
+        '
+        Me.DecBtn.Dock = System.Windows.Forms.DockStyle.Top
+        Me.DecBtn.Location = New System.Drawing.Point(3, 95)
+        Me.DecBtn.Name = "DecBtn"
+        Me.DecBtn.Size = New System.Drawing.Size(104, 79)
+        Me.DecBtn.TabIndex = 1
+        Me.DecBtn.Text = "Decrement"
+        Me.DecBtn.UseVisualStyleBackColor = True
+        '
+        'IncrBtn
+        '
+        Me.IncrBtn.Dock = System.Windows.Forms.DockStyle.Top
+        Me.IncrBtn.Location = New System.Drawing.Point(3, 16)
+        Me.IncrBtn.Name = "IncrBtn"
+        Me.IncrBtn.Size = New System.Drawing.Size(104, 79)
+        Me.IncrBtn.TabIndex = 0
+        Me.IncrBtn.Text = "Increment"
+        Me.IncrBtn.UseVisualStyleBackColor = True
         '
         'ChkoutCtrlBox
         '
@@ -287,70 +352,6 @@ Partial Class SalesForm
         Me.ItemPnl.Size = New System.Drawing.Size(516, 518)
         Me.ItemPnl.TabIndex = 4
         '
-        'CartCtrlBox
-        '
-        Me.CartCtrlBox.Controls.Add(Me.CnclBtn)
-        Me.CartCtrlBox.Controls.Add(Me.ClrBtn)
-        Me.CartCtrlBox.Controls.Add(Me.RemBtn)
-        Me.CartCtrlBox.Controls.Add(Me.DecBtn)
-        Me.CartCtrlBox.Controls.Add(Me.IncrBtn)
-        Me.CartCtrlBox.Dock = System.Windows.Forms.DockStyle.Left
-        Me.CartCtrlBox.Location = New System.Drawing.Point(3, 16)
-        Me.CartCtrlBox.Name = "CartCtrlBox"
-        Me.CartCtrlBox.Size = New System.Drawing.Size(110, 510)
-        Me.CartCtrlBox.TabIndex = 6
-        Me.CartCtrlBox.TabStop = False
-        '
-        'IncrBtn
-        '
-        Me.IncrBtn.Dock = System.Windows.Forms.DockStyle.Top
-        Me.IncrBtn.Location = New System.Drawing.Point(3, 16)
-        Me.IncrBtn.Name = "IncrBtn"
-        Me.IncrBtn.Size = New System.Drawing.Size(104, 79)
-        Me.IncrBtn.TabIndex = 0
-        Me.IncrBtn.Text = "Increment"
-        Me.IncrBtn.UseVisualStyleBackColor = True
-        '
-        'DecBtn
-        '
-        Me.DecBtn.Dock = System.Windows.Forms.DockStyle.Top
-        Me.DecBtn.Location = New System.Drawing.Point(3, 95)
-        Me.DecBtn.Name = "DecBtn"
-        Me.DecBtn.Size = New System.Drawing.Size(104, 79)
-        Me.DecBtn.TabIndex = 1
-        Me.DecBtn.Text = "Decrement"
-        Me.DecBtn.UseVisualStyleBackColor = True
-        '
-        'RemBtn
-        '
-        Me.RemBtn.Dock = System.Windows.Forms.DockStyle.Top
-        Me.RemBtn.Location = New System.Drawing.Point(3, 174)
-        Me.RemBtn.Name = "RemBtn"
-        Me.RemBtn.Size = New System.Drawing.Size(104, 79)
-        Me.RemBtn.TabIndex = 2
-        Me.RemBtn.Text = "Remove"
-        Me.RemBtn.UseVisualStyleBackColor = True
-        '
-        'ClrBtn
-        '
-        Me.ClrBtn.Dock = System.Windows.Forms.DockStyle.Top
-        Me.ClrBtn.Location = New System.Drawing.Point(3, 253)
-        Me.ClrBtn.Name = "ClrBtn"
-        Me.ClrBtn.Size = New System.Drawing.Size(104, 79)
-        Me.ClrBtn.TabIndex = 3
-        Me.ClrBtn.Text = "Clear Cart"
-        Me.ClrBtn.UseVisualStyleBackColor = True
-        '
-        'CnclBtn
-        '
-        Me.CnclBtn.Dock = System.Windows.Forms.DockStyle.Top
-        Me.CnclBtn.Location = New System.Drawing.Point(3, 332)
-        Me.CnclBtn.Name = "CnclBtn"
-        Me.CnclBtn.Size = New System.Drawing.Size(104, 79)
-        Me.CnclBtn.TabIndex = 4
-        Me.CnclBtn.Text = "Cancel"
-        Me.CnclBtn.UseVisualStyleBackColor = True
-        '
         'SalesForm
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(6.0!, 13.0!)
@@ -366,11 +367,11 @@ Partial Class SalesForm
         Me.Text = "SalesForm"
         Me.WindowState = System.Windows.Forms.FormWindowState.Maximized
         Me.CartGrpBox.ResumeLayout(False)
+        Me.CartCtrlBox.ResumeLayout(False)
         Me.ChkoutCtrlBox.ResumeLayout(False)
         Me.ChkoutCtrlBox.PerformLayout()
         Me.CatBox.ResumeLayout(False)
         Me.CatBox.PerformLayout()
-        Me.CartCtrlBox.ResumeLayout(False)
         Me.ResumeLayout(False)
 
     End Sub
@@ -396,12 +397,12 @@ Partial Class SalesForm
     Friend WithEvents DsctBtn As System.Windows.Forms.Button
     Friend WithEvents ShapeContainer1 As Microsoft.VisualBasic.PowerPacks.ShapeContainer
     Friend WithEvents LineShape1 As Microsoft.VisualBasic.PowerPacks.LineShape
-    Friend WithEvents CartCtrlBox As System.Windows.Forms.GroupBox
     Friend WithEvents CnclBtn As System.Windows.Forms.Button
     Friend WithEvents ClrBtn As System.Windows.Forms.Button
     Friend WithEvents RemBtn As System.Windows.Forms.Button
     Friend WithEvents DecBtn As System.Windows.Forms.Button
     Friend WithEvents IncrBtn As System.Windows.Forms.Button
+    Private WithEvents CartCtrlBox As System.Windows.Forms.GroupBox
     'Friend WithEvents Button1 As System.Windows.Forms.Button
 
 End Class

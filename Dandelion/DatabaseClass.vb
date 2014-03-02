@@ -75,7 +75,7 @@ Public Class DatabaseClass
 
     Public Function findDBItem(ByVal barcode As String)
 
-        sqlText = "SELECT I.Barcode, I.ItemName, I.Price, T.TaxType, T.TaxRate FROM " & ConfigurationSettings.AppSettings("Item") & " as I JOIN " & ConfigurationSettings.AppSettings("Tax") & " as T ON I.Category = T.CategoryNum WHERE I.Barcode = '" & barcode & "'"
+        sqlText = "SELECT I.Barcode, I.ItemName, I.Price, T.TaxType, T.TaxRate, I.AgeReq FROM " & ConfigurationSettings.AppSettings("Item") & " as I JOIN " & ConfigurationSettings.AppSettings("Tax") & " as T ON I.Category = T.CategoryNum WHERE I.Barcode = '" & barcode & "'"
         sqlDa = New SqlDataAdapter(sqlText, sqlCon)
         dt.Clear()
         sqlDa.Fill(dt)
@@ -85,13 +85,15 @@ Public Class DatabaseClass
         Dim taxType As String = ""
         Dim taxRate As Double
         Dim itemFound As CartItem = New CartItem()
+        Dim ageReq As Integer = 0
 
         If Not (dt.Rows.Count = 0) Then
             name = dt.Rows(0).Item(1)
             Price = dt.Rows(0).Item(2)
             taxType = dt.Rows(0).Item(3)
             taxRate = dt.Rows(0).Item(4)
-            itemFound.setValues(barcode, name, Price, taxType, taxRate)
+            ageReq = dt.Rows(0).Item(5)
+            itemFound.setValues(barcode, name, Price, taxType, taxRate, ageReq)
             Return itemFound
         End If
 

@@ -1,6 +1,6 @@
 ﻿Public Class Cart
 
-    Public inCheckOut As CartItem()
+    Public inCheckOut() As CartItem
     Dim arraySize As Integer
     Dim total As Double
     Dim subTotal As Double
@@ -20,23 +20,61 @@
 
         Dim tempCartItem As CartItem = SalesForm.mainRegister.findDBItem(barcode)
 
-
         If Not (IsNothing(tempCartItem)) Then
             Dim position As Integer = 0
             If (checkDup(barcode, position)) Then
                 inCheckOut(position).Quantity += 1
-                SalesForm.CartLstBox.Items.Item(position) = inCheckOut(position).ItemName & " x " & inCheckOut(position).Quantity
+                DisplayCart()
             Else
-                ReDim Preserve inCheckOut(arraySize)
-                inCheckOut(arraySize) = tempCartItem
-                SalesForm.CartLstBox.Items.Add(inCheckOut(arraySize).ItemName)
-                SalesForm.PriceLstBox.Items.Add(Format(inCheckOut(arraySize).price, "c"))
-            End If
+                If (tempCartItem.ageReq <> 0) Then
+                    setAge(tempCartItem.ageReq)
+                    If minAge < minAgeReq Then
+                        minAge = checkCustAge()
+                        If minAge >= minAgeReq Then
+                            ReDim Preserve inCheckOut(arraySize)
+                            inCheckOut(arraySize) = tempCartItem
+                            DisplayCart()
+                        Else
 
-            calculateSubTotal()
-            calculateTotal()
-            arraySize = inCheckOut.Length()
+                        End If
+                    End If
+                End If
+            End If
         End If
+    End Sub
+
+    Public Sub setAge(ByVal sAgeReq As Integer)
+        minAgeReq = sAgeReq
+    End Sub
+
+    Public Function checkCustAge()
+        AgeVerificationForm.ShowDialog()
+    End Function
+
+    Private Sub DisplayCart()
+        Dim selectIndex As Integer = SalesForm.CartLstBox.SelectedIndex()
+        SalesForm.CartLstBox.Items.Clear()
+        SalesForm.PriceLstBox.Items.Clear()
+        Dim index As Integer = 0
+        For Each CartItem In inCheckOut
+            Dim ItemDisplay As String = inCheckOut(index).ItemName
+            'If inCheckOut(index).Quantity > 1 Then
+            ItemDisplay += " x " & inCheckOut(index).Quantity
+            'End If
+            SalesForm.CartLstBox.Items.Add(ItemDisplay)
+            SalesForm.PriceLstBox.Items.Add(Format(inCheckOut(index).price, "c"))
+            index += 1
+        Next
+        If SalesForm.CartLstBox.Items.Count = 0 Then
+            selectIndex = -1
+        End If
+        If selectIndex <> -1 Then
+            SalesForm.CartLstBox.SelectedItem = SalesForm.CartLstBox.Items(selectIndex)
+        End If
+        calculateSubTotal()
+        calculateTotal()
+        arraySize = inCheckOut.Length()
+
     End Sub
 
     Public Function checkDup(ByVal sbarcode As String, ByRef sPosition As Integer)
@@ -51,7 +89,54 @@
         Return False
     End Function
 
-    Public Sub increItem(counter)
+    Public Sub incrItem(ByVal index As Integer)
+
+        addItem(inCheckOut(index).barcode)
+
+    End Sub
+
+    Public Sub decItem(ByVal index As Integer)
+
+        inCheckOut(index).Quantity -= 1
+        If inCheckOut(index).Quantity <= 0 Then
+            RemItem(index)
+        End If
+        DisplayCart()
+    End Sub
+
+    Public Sub RemItem(ByVal index As Integer)
+        arraySize -= 1
+        Dim tempCart(arraySize - 1) As CartItem
+        Dim position As Integer = 0
+        Dim position2 As Integer = 0
+
+        For Each CartItem In inCheckOut
+            If position2 <> index Then
+                tempCart(position) = inCheckOut(position2)
+                position += 1
+                position2 += 1
+            Else
+                position2 += 1
+            End If
+        Next
+
+        position = 0
+        ReDim inCheckOut(arraySize - 1)
+        For Each CartItem In tempCart
+            inCheckOut(position) = tempCart(position)
+            position += 1
+        Next
+
+        SalesForm.CartLstBox.ClearSelected()
+        DisplayCart()
+    End Sub
+
+    Public Sub ClrItem()
+
+        Dim index As Integer = 0
+        For Each item In inCheckOut
+            RemItem(index)
+        Next
 
     End Sub
 
@@ -65,6 +150,7 @@
         Loop
 
         SalesForm.STBlankLbl.Text = Format(subTotal, "c")
+
     End Sub
 
     Public Sub calculateTotal()
@@ -77,10 +163,6 @@
             counter += 1
         Loop
         SalesForm.TBlankLbl.Text = Format(total, "c")
-    End Sub
-
-    Public Sub checkAge()
-
     End Sub
 
     Public Function calculateTax(ByVal sPrice As Double, ByVal sQuantity As Integer, ByVal sTaxType As String, ByVal sTaxRate As Double)

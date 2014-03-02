@@ -103,7 +103,7 @@ Public Class SalesForm
     Private Sub SearchTxtBox_LostFocus(sender As Object, e As EventArgs) Handles SearchTxtBox.LostFocus
         Dim SearchFocus As Boolean = True
         Dim i As Integer = 0
-        While i < (CartLstBox.Items.Count - 1)
+        While i < (CartLstBox.Items.Count)
 
             If CartLstBox.Focused Then
                 SearchFocus = False
@@ -120,19 +120,43 @@ Public Class SalesForm
 
     Private Sub IncrBtn_Click(sender As Object, e As EventArgs) Handles IncrBtn.Click
 
-        leaveCartEditMode()
+        Dim index As Integer = CartLstBox.SelectedIndex
+        If index <> -1 Then
+            currentCart.incrItem(index)
+        End If
+        If CartLstBox.Items.Count = 0 Then
+            leaveCartEditMode()
+        End If
     End Sub
 
     Private Sub DecBtn_Click(sender As Object, e As EventArgs) Handles DecBtn.Click
-        leaveCartEditMode()
+
+        Dim index As Integer = CartLstBox.SelectedIndex
+        If index <> -1 Then
+            currentCart.decItem(index)
+        End If
+        If CartLstBox.Items.Count = 0 Then
+            leaveCartEditMode()
+        End If
     End Sub
 
     Private Sub RemBtn_Click(sender As Object, e As EventArgs) Handles RemBtn.Click
-        leaveCartEditMode()
+
+        Dim index As Integer = CartLstBox.SelectedIndex
+        If index <> -1 Then
+            currentCart.RemItem(index)
+        End If
+        If CartLstBox.Items.Count = 0 Then
+            leaveCartEditMode()
+        End If
+
     End Sub
 
     Private Sub ClrBtn_Click(sender As Object, e As EventArgs) Handles ClrBtn.Click
+
+        currentCart.ClrItem()
         leaveCartEditMode()
+
     End Sub
 
     Private Sub CnclBtn_Click(sender As Object, e As EventArgs) Handles CnclBtn.Click
@@ -146,6 +170,7 @@ Public Class SalesForm
             If cControl.Left < CartGrpBox.Left Then
                 cControl.Enabled = False
                 CartCtrlBox.Enabled = True
+                CnclBtn.Visible = True
             End If
         Next
     End Sub
@@ -158,6 +183,7 @@ Public Class SalesForm
         Next
         CartCtrlBox.Enabled = False
         CartLstBox.ClearSelected()
+        CnclBtn.Visible = False
         SearchTxtBox.Focus()
 
 
