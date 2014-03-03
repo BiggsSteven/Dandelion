@@ -4,14 +4,15 @@
     Dim arraySize As Integer
     Dim total As Double
     Dim subTotal As Double
-    Dim minAgeReq As Double
-    Dim minAge As Double
+    Public minAgeReq As Double
+    Public minAge As Double
 
     Public Sub cartIntialize()
 
         total = 0.0
         subTotal = 0.0
         arraySize = 0
+        minAgeReq = 0
         SalesForm.STBlankLbl.Text = Format(total, "c")
         SalesForm.TBlankLbl.Text = Format(total, "c")
     End Sub
@@ -26,30 +27,35 @@
                 inCheckOut(position).Quantity += 1
                 DisplayCart()
             Else
-                If (tempCartItem.ageReq <> 0) Then
-                    setAge(tempCartItem.ageReq)
-                    If minAge < minAgeReq Then
-                        minAge = checkCustAge()
-                        If minAge >= minAgeReq Then
-                            ReDim Preserve inCheckOut(arraySize)
-                            inCheckOut(arraySize) = tempCartItem
-                            DisplayCart()
-                        Else
-
-                        End If
-                    End If
+                If (tempCartItem.ageReq > minAgeReq) Then
+                    setAgeReq(tempCartItem.ageReq)
+                End If
+                If minAge < minAgeReq Then
+                    checkCustAge()
+                End If
+                If minAge >= minAgeReq Then
+                    ReDim Preserve inCheckOut(arraySize)
+                    inCheckOut(arraySize) = tempCartItem
+                    DisplayCart()
+                Else
+                    MessageBox.Show("Customer is not old enough to purchase this item")
                 End If
             End If
         End If
+
     End Sub
 
-    Public Sub setAge(ByVal sAgeReq As Integer)
+    Public Sub setAgeReq(ByVal sAgeReq As Integer)
         minAgeReq = sAgeReq
     End Sub
-
-    Public Function checkCustAge()
+    Public Sub setAge(ByVal sAgeReq As Integer)
+        minAge = sAgeReq
+    End Sub
+    Public Sub checkCustAge()
+        AgeVerificationForm.Dispose()
         AgeVerificationForm.ShowDialog()
-    End Function
+
+    End Sub
 
     Private Sub DisplayCart()
         Dim selectIndex As Integer = SalesForm.CartLstBox.SelectedIndex()
@@ -137,6 +143,8 @@
         For Each item In inCheckOut
             RemItem(index)
         Next
+        minAgeReq = 0
+        minAge = 0
 
     End Sub
 
