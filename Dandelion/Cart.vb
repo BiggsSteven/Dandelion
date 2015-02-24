@@ -48,9 +48,11 @@
     Public Sub setAgeReq(ByVal sAgeReq As Integer)
         minAgeReq = sAgeReq
     End Sub
+
     Public Sub setAge(ByVal sAgeReq As Integer)
         minAge = sAgeReq
     End Sub
+
     Public Sub checkCustAge()
         AgeVerificationForm.Dispose()
         AgeVerificationForm.ShowDialog()
@@ -189,4 +191,10 @@
         Return (sQuantity * (sPrice * staxRate))
 
     End Function
+
+    Public Sub DestockCart()
+        For Each element As CartItem In inCheckOut
+            SalesForm.mainRegister.DeStock(element.barcode, element.Quantity)
+        Next
+    End Sub
 End Class

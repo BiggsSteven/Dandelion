@@ -15,4 +15,12 @@
         SalesForm.currentCart.addItem(barcode)
 
     End Sub
+
+    Public Sub addtoEditList(ByVal sender As System.Object, ByVal e As System.EventArgs)
+
+        FormInventoryManip.nowCart.addEditItem(barcode)
+        FormInventoryManip.BtnBegin.Enabled = True
+
+    End Sub
+
 End Class

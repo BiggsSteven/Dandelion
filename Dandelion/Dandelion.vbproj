@@ -79,7 +79,20 @@
     </Compile>
     <Compile Include="Cart.vb" />
     <Compile Include="CartItem.vb" />
+    <Compile Include="CheckOutForm.Designer.vb">
+      <DependentUpon>CheckOutForm.vb</DependentUpon>
+    </Compile>
+    <Compile Include="CheckOutForm.vb">
+      <SubType>Form</SubType>
+    </Compile>
     <Compile Include="DatabaseClass.vb" />
+    <Compile Include="EditList.vb" />
+    <Compile Include="FormInventoryManip.Designer.vb">
+      <DependentUpon>FormInventoryManip.vb</DependentUpon>
+    </Compile>
+    <Compile Include="FormInventoryManip.vb">
+      <SubType>Form</SubType>
+    </Compile>
     <Compile Include="ItemButton.vb">
       <SubType>Component</SubType>
     </Compile>
@@ -109,6 +122,12 @@
   <ItemGroup>
     <EmbeddedResource Include="AgeVerificationForm.resx">
       <DependentUpon>AgeVerificationForm.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="CheckOutForm.resx">
+      <DependentUpon>CheckOutForm.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="FormInventoryManip.resx">
+      <DependentUpon>FormInventoryManip.vb</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="SalesForm.resx">
       <DependentUpon>SalesForm.vb</DependentUpon>

@@ -19,39 +19,25 @@ Public Class DatabaseClass
         connectionStr = "Server =" & server & ";Database =" & database & ";User Id=" & User & ";Password=" & Password & ";"
         sqlCon = New SqlConnection(connectionStr)
         sqlCon.Open()
-        'Dim sqlText As String = "SELECT Name FROM RobShop.dbo.Items WHERE Barcode = '55555'"
-        'sqlDa = New SqlDataAdapter(sqlText, sqlCon)
-        'sqlDa.Fill(dt)
 
 
     End Sub
+
     Public Sub getItemList(ByVal catSelected As Integer, ByRef ItemList() As ItemButton)
         Dim column As String = ""
 
-        'ColdFood 1
-        'CookedFood 2
-        'Beverage 3
-        'Alcohol 4
-        'Cigarettes 5
-        'NonCon 6
-        'Other 7
+        'Candy 1
+        'Snack 2
+        'ColdFood 3
+        'HotFood 4
+        'Beverage 5
+        'Alcohol 6
+        'Cigarettes 7
+        'Supplies 8
+        'Other 9
 
-        Select Case catSelected
-            Case 1
-                column = "1"
-            Case 2
-                column = "2"
-            Case 3
-                column = "3"
-            Case 4
-                column = "4"
-            Case 5
-                column = "5"
-            Case 6
-                column = "6"
-            Case 7
-                column = "7"
-        End Select
+
+        column = catSelected
 
         sqlText = "SELECT COUNT(*) From " & ConfigurationSettings.AppSettings("Item") & " WHERE Category = '" & column & "'"
         sqlCmd = New SqlCommand(sqlText, sqlCon)
@@ -62,6 +48,7 @@ Public Class DatabaseClass
         sqlText = "SELECT Barcode, ItemName FROM " & ConfigurationSettings.AppSettings("Item") & " WHERE Category = '" & column & "'"
         sqlDa = New SqlDataAdapter(sqlText, sqlCon)
         dt.Clear()
+        dt = New DataTable
         sqlDa.Fill(dt)
 
         Do While (rowCount > 0)
@@ -75,9 +62,10 @@ Public Class DatabaseClass
 
     Public Function findDBItem(ByVal barcode As String)
 
-        sqlText = "SELECT I.Barcode, I.ItemName, I.Price, T.TaxType, T.TaxRate, I.AgeReq FROM " & ConfigurationSettings.AppSettings("Item") & " as I JOIN " & ConfigurationSettings.AppSettings("Tax") & " as T ON I.Category = T.CategoryNum WHERE I.Barcode = '" & barcode & "'"
+        sqlText = "SELECT I.Barcode, I.ItemName, I.Price, T.TaxType, T.TaxRate, I.AgeReq, I.Quant, I.BottomQ, I.TopQ, I.Category FROM " & ConfigurationSettings.AppSettings("Item") & " as I JOIN " & ConfigurationSettings.AppSettings("Tax") & " as T ON I.Category = T.CategoryNum WHERE I.Barcode = '" & barcode & "'"
         sqlDa = New SqlDataAdapter(sqlText, sqlCon)
         dt.Clear()
+        dt = New DataTable
         sqlDa.Fill(dt)
 
         Dim name As String = ""
@@ -86,6 +74,10 @@ Public Class DatabaseClass
         Dim taxRate As Double
         Dim itemFound As CartItem = New CartItem()
         Dim ageReq As Integer = 0
+        Dim quantity As Integer = 0
+        Dim BottomQ As Integer = 0
+        Dim TopQ As Integer = 0
+        Dim Category As String = ""
 
         If Not (dt.Rows.Count = 0) Then
             name = dt.Rows(0).Item(1)
@@ -93,10 +85,65 @@ Public Class DatabaseClass
             taxType = dt.Rows(0).Item(3)
             taxRate = dt.Rows(0).Item(4)
             ageReq = dt.Rows(0).Item(5)
-            itemFound.setValues(barcode, name, Price, taxType, taxRate, ageReq)
+            quantity = dt.Rows(0).Item(6)
+            BottomQ = dt.Rows(0).Item(7)
+            TopQ = dt.Rows(0).Item(8)
+            Category = dt.Rows(0).Item(9)
+
+            itemFound.setValues(barcode, name, Price, taxType, taxRate, ageReq, quantity, BottomQ, TopQ, Category)
             Return itemFound
         End If
 
 
     End Function
+
+    Public Sub DeStock(ByVal barcode As String, ByVal quantity As Integer)
+        sqlText = "SELECT Barcode, Quant FROM " & ConfigurationSettings.AppSettings("Item") & " WHERE Barcode = '" & barcode & "'"
+        sqlDa = New SqlDataAdapter(sqlText, sqlCon)
+        dt.Clear()
+        dt = New DataTable
+        sqlDa.Fill(dt)
+
+        Dim preQuan As Integer
+        Dim postQuan As Integer
+
+        If Not (dt.Rows.Count = 0) Then
+            preQuan = dt.Rows(0).Item(1)
+            postQuan = preQuan - quantity
+            sqlText = "UPDATE " & ConfigurationSettings.AppSettings("Item") & " SET Quant = " & postQuan & " WHERE Barcode = '" & barcode & "'"
+            sqlCmd = New SqlCommand(sqlText, sqlCon)
+            sqlCmd.ExecuteNonQuery()
+        End If
+    End Sub
+
+    Public Sub ReStock(ByVal barcode As String, ByVal quantity As Integer)
+        sqlText = "UPDATE " & ConfigurationSettings.AppSettings("Item") & " SET Quant = " & quantity & " WHERE Barcode = '" & barcode & "'"
+        sqlCmd = New SqlCommand(sqlText, sqlCon)
+        sqlCmd.ExecuteNonQuery()
+    End Sub
+
+    Public Sub addItem(ByVal barcode As String, ByVal name As String, ByVal ageReq As String, ByVal price As String, _
+                       ByVal stockQuant As String, ByVal minQuant As String, ByVal maxQuant As String, ByVal category As Integer)
+
+        sqlText = "INSERT INTO " & ConfigurationSettings.AppSettings("Item") & " (Barcode, ItemName, Category, Price, AgeReq, Quant, BottomQ, TopQ) VALUES " _
+             & "( '" & barcode & "' , '" & name & "' , '" & category & "' , '" & price & "' , '" & ageReq & "' , '" & stockQuant & "','" _
+             & minQuant & "' , '" & maxQuant & "')"
+        sqlCmd = New SqlCommand(sqlText, sqlCon)
+        sqlCmd.ExecuteNonQuery()
+    End Sub
+
+    Public Sub EditItem(ByVal barcode As String, ByVal name As String, ByVal ageReq As String, ByVal price As String, _
+                       ByVal minQuant As String, ByVal maxQuant As String, ByVal category As Integer)
+        sqlText = "UPDATE " & ConfigurationSettings.AppSettings("Item") & " SET ItemName = '" & name & "', Category = '" & category _
+            & "', Price = '" & price & "', AgeReq = '" & ageReq & "', BottomQ = '" & minQuant & "', TopQ = '" & maxQuant _
+            & "' Where barcode ='" & barcode & "'"
+        sqlCmd = New SqlCommand(sqlText, sqlCon)
+        sqlCmd.ExecuteNonQuery()
+    End Sub
+
+    Public Sub RemoveItem(ByVal barcode As String)
+        sqlText = "DELETE FROM " & ConfigurationSettings.AppSettings("Item") & " WHERE barcode = '" & barcode & "'"
+        sqlCmd = New SqlCommand(sqlText, sqlCon)
+        sqlCmd.ExecuteNonQuery()
+    End Sub
 End Class

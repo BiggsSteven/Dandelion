@@ -7,42 +7,52 @@ Public Class SalesForm
     Public mainRegister As DatabaseClass = New DatabaseClass
     Public currentCart As Cart = New Cart
     Dim ItemList As ItemButton()
+    Dim ItemPnl As Panel
     Dim catSelected As Integer = -1
 
     Private Sub SalesForm_Load(sender As Object, e As EventArgs) Handles MyBase.Load
         mainRegister.Database()
         currentCart.cartIntialize()
+        ItemPnl = New Panel
+        Me.Controls.Add(ItemPnl)
         changeCat(1) 'Start with first category open by default
         SearchTxtBox.Focus()
-        CartCtrlBox.Enabled = False
     End Sub
 
-    Private Sub ColdBtn_Click(sender As Object, e As EventArgs) Handles ColdBtn.Click
+    Private Sub BtnCandy_Click(sender As Object, e As EventArgs) Handles BtnCandy.Click
         changeCat(1)
     End Sub
 
-    Private Sub CookedBtn_Click(sender As Object, e As EventArgs) Handles CookedBtn.Click
+    Private Sub BtnSnack_Click(sender As Object, e As EventArgs) Handles BtnSnack.Click
         changeCat(2)
     End Sub
 
-    Private Sub BeverageBtn_Click(sender As Object, e As EventArgs) Handles BeverageBtn.Click
+    Private Sub ColdBtn_Click_1(sender As Object, e As EventArgs) Handles ColdBtn.Click
         changeCat(3)
     End Sub
 
-    Private Sub AlcoholBtn_Click(sender As Object, e As EventArgs) Handles AlcoholBtn.Click
+    Private Sub HotBtn_Click(sender As Object, e As EventArgs) Handles HotBtn.Click
         changeCat(4)
     End Sub
 
-    Private Sub CigBtn_Click(sender As Object, e As EventArgs) Handles CigBtn.Click
+    Private Sub BeverageBtn_Click_1(sender As Object, e As EventArgs) Handles BeverageBtn.Click
         changeCat(5)
     End Sub
 
-    Private Sub NonConsumBtn_Click(sender As Object, e As EventArgs) Handles NonConsumBtn.Click
+    Private Sub AlcoholBtn_Click_1(sender As Object, e As EventArgs) Handles AlcoholBtn.Click
         changeCat(6)
     End Sub
 
-    Private Sub Other_Click(sender As Object, e As EventArgs) Handles Other.Click
+    Private Sub CigBtn_Click_1(sender As Object, e As EventArgs) Handles CigBtn.Click
         changeCat(7)
+    End Sub
+
+    Private Sub BtnSupply_Click(sender As Object, e As EventArgs) Handles BtnSupply.Click
+        changeCat(8)
+    End Sub
+
+    Private Sub BtnOther_Click(sender As Object, e As EventArgs) Handles BtnOther.Click
+        changeCat(9)
     End Sub
 
     Private Sub SearchTextBox_KeyUp(ByVal sender As Object, ByVal e As KeyEventArgs) Handles SearchTxtBox.KeyUp
@@ -66,11 +76,9 @@ Public Class SalesForm
         'To reset the buttons, the program disposes of the panel and recreates it
         ItemPnl.Dispose()
         ItemPnl = New Panel
+        ItemPnl.Dock() = DockStyle.Fill
         ItemPnl.AutoScroll = True
-        ItemPnl.Left = CatBox.Right
-        ItemPnl.Width = CartGrpBox.Left - CatBox.Right
-        ItemPnl.Height = CtrlBox.Top
-        Me.Controls.Add(ItemPnl)
+        BoxOuterBtnGrp.Controls.Add(ItemPnl)
 
         'sets variables to be used to place the buttons without overlap of the objects
         Dim boxSize As Double = ItemPnl.Size.Width()
@@ -78,7 +86,7 @@ Public Class SalesForm
         Dim increCount As Integer = 0
 
         Dim startTop As Integer = 20
-        Dim startLeft As Integer = 5
+        Dim startLeft As Integer = 20
         Dim btnBoxSize As Integer = 75
         Dim row As Integer = 0
         Dim column As Integer = 0
@@ -93,6 +101,7 @@ Public Class SalesForm
             ItemList(increCount).Top = startTop + (row * btnBoxSize)
             ItemList(increCount).Height = btnBoxSize
             ItemList(increCount).Width = btnBoxSize
+            ItemList(increCount).Font = New Font(ItemList(increCount).Name, 10, FontStyle.Regular)
             ItemPnl.Controls.Add(ItemList(increCount))
             AddHandler ItemList(increCount).Click, AddressOf ItemList(increCount).addToCart
             increCount += 1
@@ -188,5 +197,23 @@ Public Class SalesForm
 
 
     End Sub
+
+    Private Sub CheckOutBtn_Click(sender As Object, e As EventArgs) Handles CheckOutBtn.Click
+        CheckOutForm.Dispose()
+        CheckOutForm.ShowDialog()
+        leaveCartEditMode()
+
+    End Sub
+
+    Private Sub BtnEditInv_Click(sender As Object, e As EventArgs) Handles BtnEditInv.Click
+        FormInventoryManip.Dispose()
+        FormInventoryManip.ShowDialog()
+    End Sub
+
+    Private Sub BtnAlerts_Click(sender As Object, e As EventArgs) Handles BtnAlerts.Click
+
+    End Sub
+
+
 
 End Class
